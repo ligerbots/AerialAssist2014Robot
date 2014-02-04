@@ -40,5 +40,13 @@ public class Pickup extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public void runRoller(int state) {
+        try {
+            rollerJag.setX(state);
+        } catch (edu.wpi.first.wpilibj.can.CANTimeoutException ex) {
+            System.out.println("Timeout Exception on ");
+        }
+        
+    }
 }
 

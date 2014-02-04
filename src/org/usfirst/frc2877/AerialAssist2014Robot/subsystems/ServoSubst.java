@@ -37,5 +37,13 @@ public class ServoSubst extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    
+    public void toggle90Degrees(boolean toggle) {
+        if (toggle) {
+            servo.setAngle(90);
+        } else {
+            servo.setAngle(0);
+        }
+    }
 }
 
