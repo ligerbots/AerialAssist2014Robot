@@ -13,12 +13,20 @@ package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
+import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Pickup;
 
 /**
  *
  */
 public class  ToggleRollerAndOpenArms extends Command {
-
+     static boolean toggleValue = false;
+     Pickup pickupSubst = Robot.pickup;
+     
+     //in execute(), each time it runs theTimer goes up by 1 until it reaches someValue,
+     //at which point done becomes true and this command ends.
+     int theTimer=0,someValue = 10;
+     
+     boolean done = false;
     public ToggleRollerAndOpenArms() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,23 +38,40 @@ public class  ToggleRollerAndOpenArms extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        toggleValue = !toggleValue;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+       //this toggles it going forward or backward. Kind of obvious, but I'm commenting on it. In a comment.
+        
+       if(toggleValue){ //The 1 and -1 may need to be swapped in the future. 
+           pickupSubst.runRoller(1);
+           pickupSubst.openPickup();
+        }else{
+           pickupSubst.runRoller(-1);
+           pickupSubst.closePickup();
+       }
+        pickupSubst.closeCatch();
+        theTimer++;
+        if(theTimer < someValue){
+           done = true;
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return done;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        pickupSubst.closePickup();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }

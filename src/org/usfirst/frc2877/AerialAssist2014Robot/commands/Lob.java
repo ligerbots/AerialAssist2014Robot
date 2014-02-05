@@ -13,12 +13,18 @@ package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
+import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Pickup;
+import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Shooter;
 
 /**
  *
  */
 public class  Lob extends Command {
 
+    Shooter theSubst = Robot.shooter;
+    Pickup thePickup = Robot.pickup;
+    //DoubleSolenoid theOtherPiston = RobotMap.shooterRightSolenoidShoot;
+    int theTimer = 0,someValue=10;
     public Lob() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -30,23 +36,45 @@ public class  Lob extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        theSubst.leftDeactivate();
+        theSubst.KickActivate();
+        
+        //MOVE OUTTA THE WAY IM LOBBIN DIS BALL HERE
+        thePickup.openWide();
+        
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        //Use 1 piston
+        theTimer++;
+        if(theTimer > someValue){
+           theSubst.unKick();
+           
+        }
+        
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        
+        //this is true when we're done, just like in our execute().
+        return theTimer > someValue+1;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        theSubst.dualDeactivate();
+        theSubst.unKick();
+        theSubst.dualActivate();
+        
+        //ok, thanks for moving so I could shoot. NOW GET BACK IN MY ROBOT
+        thePickup.shutUp();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }

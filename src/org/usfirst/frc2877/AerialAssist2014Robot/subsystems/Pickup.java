@@ -41,12 +41,43 @@ public class Pickup extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void runRoller(int state) {
+        //set to 0 to do nothing
+        //1 and -1 set the rollers to go forward and reverse, not necessarily in that order.
         try {
             rollerJag.setX(state);
         } catch (edu.wpi.first.wpilibj.can.CANTimeoutException ex) {
             System.out.println("Timeout Exception on ");
         }
         
+    }
+    
+    //these next 4 functions do exactly what their names say they do.
+    public void openPickup(){
+        pickupSolenoid.set(DoubleSolenoid.Value.kForward);
+    }
+    public void closePickup(){
+        pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+    public void openCatch(){
+        catchSolenoid.set(DoubleSolenoid.Value.kForward);
+    }
+    public void closeCatch(){
+        catchSolenoid.set(DoubleSolenoid.Value.kReverse);
+        //JOKE ALERT: catchSolenoid.set(DoubleSolenoid.Value.kTraverse);
+    }
+    
+    //These 2 functions are shortcuts! 
+    public void openWide(){
+        //This function is a shortcut to open everything.
+        openCatch();
+        openPickup();
+    }
+    public void shutUp(){
+        //But... but...
+        
+        //This function closes the catch and the pickup.
+        closeCatch();
+        closePickup();
     }
 }
 
