@@ -13,6 +13,7 @@ package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
+import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 
 /**
  *
@@ -30,23 +31,53 @@ public class  Turn90Left extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        RobotMap.driveTrainGyro.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        
+        double gyroAngle = Robot.driveTrain.getCurrentAngle();
+        double gyroDrivePass = (90.0 - gyroAngle) / 90.0;
+        double minConstant = 0.4;
+        if (Math.abs(gyroDrivePass) > 1.0) {
+            if (gyroDrivePass > 1.0) {
+                gyroDrivePass = 1.0;
+            } else if (gyroDrivePass < -1.0) {
+                gyroDrivePass = -1.0;
+            }
+          }
+       if (Math.abs(gyroDrivePass) < minConstant) {
+           if (gyroAngle < 90.0) {
+               gyroDrivePass = minConstant;
+           } else if (gyroAngle > 90.0) {
+               gyroDrivePass = -minConstant;
+           }
+         }
+       Robot.driveTrain.drive(gyroDrivePass, 0);
+       // As far as we can tell, using PID to do these 90 turns is unnecessary.
+       // However, if we can figure out how to do that eventually, it might be
+       // smoother.
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        double gyroAngle = Robot.driveTrain.getCurrentAngle();
+        boolean isFinished = (gyroAngle > 89.0 && gyroAngle < 91.0);
+        if (isFinished) {
+            System.out.println("Turn90Left Finished");
+        }
+        return isFinished;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        Robot.driveTrain.drive(0, 0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        end();
     }
 }
