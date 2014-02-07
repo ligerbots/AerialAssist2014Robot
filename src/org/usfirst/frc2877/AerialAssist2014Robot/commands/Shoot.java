@@ -39,7 +39,10 @@ public class Shoot extends Command {
     protected void initialize() {
 
         //open the arms so we have space to shoot them in!
+        if (Robot.armIsOpen == false) {
         thePickup.openWide();
+        Robot.armIsOpen = true;
+        }
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -70,8 +73,6 @@ public class Shoot extends Command {
         theSubst.unKick();
         theSubst.dualDeactivate();
         theSubst.dualActivate();
-        thePickup.shutUp(); //SHUT UP I'M SHOOTING HERE
-        TogglePickup.toggleValue = false;
         Robot.servoSubst.toggle90Degrees(false);
     }
 

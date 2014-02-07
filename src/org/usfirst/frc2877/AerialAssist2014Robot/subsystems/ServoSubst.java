@@ -16,6 +16,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.commands.*;
 import edu.wpi.first.wpilibj.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 
 
@@ -48,6 +49,10 @@ public class ServoSubst extends Subsystem {
             servo.setAngle(0);
             Robot.cameraIsShoot = false;
         }
+        int degrees = toggle ? 90 : 0;
+        String orientation = toggle ? "Shooter" : "Pickup";
+        SmartDashboard.putString("CameraOrientation", orientation);
+        SmartDashboard.putNumber("CameraDegrees", degrees);
     }
 }
 
