@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.can.*;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 
 
 /**
@@ -53,12 +54,12 @@ public class Pickup extends Subsystem {
     
     //these next 4 functions do exactly what their names say they do.
     public void openPickup(){
-        // TODO add armsOpen flag=true
         pickupSolenoid.set(DoubleSolenoid.Value.kForward);
+        Robot.armIsOpen = true;
     }
     public void closePickup(){
-        // TODO add armsOpen flag=false
         pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
+        Robot.armIsOpen = false;
     }
     public void openCatch(){
         catchSolenoid.set(DoubleSolenoid.Value.kForward);

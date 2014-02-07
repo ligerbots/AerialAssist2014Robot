@@ -19,7 +19,6 @@ import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
  */
 public class  CameraTurn extends Command {
 
-    // TODO need global flag to keep track of camera position
     public static boolean togglePosition;
     
     public CameraTurn() {
