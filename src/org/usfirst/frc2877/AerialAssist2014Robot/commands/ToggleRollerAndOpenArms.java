@@ -19,7 +19,9 @@ import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Pickup;
  *
  */
 public class  ToggleRollerAndOpenArms extends Command {
-     static boolean toggleValue = false;
+//TODO Need to move toggleValue to Robot so it lives forever
+    // This should really be a global armsOpen flag
+    static boolean toggleValue = false;
      Pickup pickupSubst = Robot.pickup;
      
      //in execute(), each time it runs theTimer goes up by 1 until it reaches someValue,
@@ -49,12 +51,11 @@ public class  ToggleRollerAndOpenArms extends Command {
            pickupSubst.runRoller(1);
            pickupSubst.openPickup();
         }else{
-           pickupSubst.runRoller(-1);
+           pickupSubst.runRoller(0);
            pickupSubst.closePickup();
        }
-        pickupSubst.closeCatch();
         theTimer++;
-        if(theTimer < someValue){
+        if(theTimer > someValue){
            done = true;
         }
     }

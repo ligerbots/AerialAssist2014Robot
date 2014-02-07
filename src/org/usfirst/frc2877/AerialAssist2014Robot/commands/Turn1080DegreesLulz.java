@@ -18,6 +18,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
  */
 public class Turn1080DegreesLulz extends Command {
 
+    // TODO make this global in Robot
     public static boolean whichWay1080 = true;
 
     public Turn1080DegreesLulz() {

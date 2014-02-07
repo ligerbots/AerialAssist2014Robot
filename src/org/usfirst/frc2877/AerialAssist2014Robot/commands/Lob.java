@@ -36,11 +36,11 @@ public class  Lob extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        theSubst.leftDeactivate();
-        theSubst.KickActivate();
-        
         //MOVE OUTTA THE WAY IM LOBBIN DIS BALL HERE
         thePickup.openWide();
+        //TODO need to wait until arms are open before shooting
+        theSubst.leftDeactivate();
+        theSubst.KickActivate();
         
     }
 
@@ -64,8 +64,8 @@ public class  Lob extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        theSubst.dualDeactivate();
         theSubst.unKick();
+        theSubst.dualDeactivate();
         theSubst.dualActivate();
         
         //ok, thanks for moving so I could shoot. NOW GET BACK IN MY ROBOT

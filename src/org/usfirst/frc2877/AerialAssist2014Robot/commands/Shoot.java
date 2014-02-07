@@ -47,7 +47,7 @@ int theTimer=0,someValue=10;
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        
+       //TODO wait for arms to open before kicking 
         
        ///USE 2 PISTONS 
        theSubst.KickActivate();
@@ -63,15 +63,17 @@ int theTimer=0,someValue=10;
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return theTimer > someValue+1;
+        return theTimer > someValue;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        theSubst.dualDeactivate();
         theSubst.unKick();
+        theSubst.dualDeactivate();
         theSubst.dualActivate();
         thePickup.shutUp(); //SHUT UP I'M SHOOTING HERE
+        //TODO mover camera back to pickup position
+        // TODO don't forget to set the flag
     }
 
     // Called when another command which requires one or more of the same

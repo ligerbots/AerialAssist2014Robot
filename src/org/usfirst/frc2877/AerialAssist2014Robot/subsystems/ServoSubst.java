@@ -41,6 +41,7 @@ public class ServoSubst extends Subsystem {
     public void toggle90Degrees(boolean toggle) {
         if (toggle) {
             servo.setAngle(90);
+            //TODO this is where the global flag for camera location should be
         } else {
             servo.setAngle(0);
         }

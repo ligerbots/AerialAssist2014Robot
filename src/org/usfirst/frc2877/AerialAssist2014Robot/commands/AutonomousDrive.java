@@ -34,7 +34,7 @@ public class AutonomousDrive extends Command {
     protected void execute() {
         time++;
         Robot.driveTrain.drive(0, 1);
-        if (time < m_finish) {
+        if (time > m_finish) {
             done = true;
         }
     }

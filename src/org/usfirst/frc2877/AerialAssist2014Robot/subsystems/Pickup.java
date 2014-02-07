@@ -53,9 +53,11 @@ public class Pickup extends Subsystem {
     
     //these next 4 functions do exactly what their names say they do.
     public void openPickup(){
+        // TODO add armsOpen flag=true
         pickupSolenoid.set(DoubleSolenoid.Value.kForward);
     }
     public void closePickup(){
+        // TODO add armsOpen flag=false
         pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
     public void openCatch(){

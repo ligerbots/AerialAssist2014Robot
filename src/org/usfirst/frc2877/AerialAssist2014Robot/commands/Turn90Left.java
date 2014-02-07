@@ -21,6 +21,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 public class  Turn90Left extends Command {
 
     public Turn90Left() {
+        //TODO add global flag for camera position
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
 	
@@ -55,6 +56,9 @@ public class  Turn90Left extends Command {
            }
          }
        Robot.driveTrain.drive(gyroDrivePass, 0);
+       
+       //TODO add logic to turn servo for camera
+       
        // As far as we can tell, using PID to do these 90 turns is unnecessary.
        // However, if we can figure out how to do that eventually, it might be
        // smoother.
