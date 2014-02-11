@@ -22,7 +22,7 @@ public class Shoot extends Command {
     Shooter theSubst = Robot.shooter;
     Pickup thePickup = Robot.pickup;
     //DoubleSolenoid theOtherPiston = RobotMap.shooterRightSolenoidShoot;
-    int theTimer = 0, someValue = 10;
+    int theTimer = 0, someValue = 100;
 
     public Shoot() {
         // Use requires() here to declare subsystem dependencies

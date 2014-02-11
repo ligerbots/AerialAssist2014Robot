@@ -30,9 +30,6 @@ public class Turn90Left extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         RobotMap.driveTrainGyro.reset();
-        if (Robot.cameraIsShoot = false) {
-            Robot.servoSubst.toggle90Degrees(true);
-        }
     }
 
     // Called repeatedly when this Command is scheduled to run
