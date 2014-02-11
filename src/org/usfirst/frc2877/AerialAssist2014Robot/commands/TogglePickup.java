@@ -48,8 +48,8 @@ public class TogglePickup extends Command {
         if (toggleValue) { //The 1 and -1 may need to be swapped in the future. 
             pickupSubst.runRoller(1);
             pickupSubst.openPickup();
-        } else {
-            pickupSubst.runRoller(0);
+        } else if (!toggleValue) {
+            
             if ((theTimer / 5) % 2 == 0) {
                 pickupSubst.closePickup();
             } else {
@@ -76,6 +76,9 @@ public class TogglePickup extends Command {
     // Called once after isFinished returns true
     protected void end() {
         pickupSubst.offPickup();
+        if (!toggleValue) {
+            pickupSubst.runRoller(0);
+        }
     }
 
     // Called when another command which requires one or more of the same
