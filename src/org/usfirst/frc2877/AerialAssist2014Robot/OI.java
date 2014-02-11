@@ -78,7 +78,7 @@ public class OI {
         toggleArmsButton = new JoystickButton(joystick, 1);
         toggleArmsButton.whenPressed(new TogglePickup());
         lobButton = new JoystickButton(joystick, 5);
-        lobButton.whenPressed(new Lob());
+        lobButton.whenPressed(new Shoot());
         shootButton = new JoystickButton(joystick, 6);
         shootButton.whenPressed(new Shoot());
         turn90RightButton = new JoystickButton(joystick, 14);
@@ -98,7 +98,7 @@ public class OI {
 
         SmartDashboard.putData("Shoot", new Shoot());
 
-        SmartDashboard.putData("Lob", new Lob());
+        SmartDashboard.putData("Lob", new Shoot());
 
         SmartDashboard.putData("ToggleRollerAndOpenArms", new TogglePickup());
 

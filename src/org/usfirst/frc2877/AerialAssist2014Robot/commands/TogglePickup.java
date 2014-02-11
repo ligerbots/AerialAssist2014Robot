@@ -21,9 +21,9 @@ public class TogglePickup extends Command {
     static boolean toggleValue = false;
     Pickup pickupSubst = Robot.pickup;
 
-     //in execute(), each time it runs theTimer goes up by 1 until it reaches someValue,
+    //in execute(), each time it runs theTimer goes up by 1 until it reaches someValue,
     //at which point done becomes true and this command ends.
-    int theTimer = 0, someValue = 10;
+    int theTimer = 0, someValue = 100;
 
     boolean done = false;
 
@@ -43,18 +43,28 @@ public class TogglePickup extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       //this toggles it going forward or backward. Kind of obvious, but I'm commenting on it. In a comment.
+        //this toggles it going forward or backward. Kind of obvious, but I'm commenting on it. In a comment.
 
         if (toggleValue) { //The 1 and -1 may need to be swapped in the future. 
             pickupSubst.runRoller(1);
             pickupSubst.openPickup();
         } else {
             pickupSubst.runRoller(0);
-            pickupSubst.closePickup();
+            if ((theTimer / 5) % 2 == 0) {
+                pickupSubst.closePickup();
+            } else {
+                pickupSubst.offPickup();
+            }
         }
         theTimer++;
-        if (theTimer > someValue) {
-            done = true;
+        if (toggleValue) {
+            if (theTimer > someValue) {
+                done = true;
+            }
+        } else if (!toggleValue) {
+            if (theTimer > 2 * someValue) {
+                done = true;
+            }
         }
     }
 
@@ -65,7 +75,7 @@ public class TogglePickup extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        pickupSubst.closePickup();
+        pickupSubst.offPickup();
     }
 
     // Called when another command which requires one or more of the same

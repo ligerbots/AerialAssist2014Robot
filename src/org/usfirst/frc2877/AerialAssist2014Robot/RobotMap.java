@@ -31,8 +31,7 @@ public class RobotMap {
     public static CANJaguar driveTrainRightRearJag;
     public static RobotDrive driveTrainRobotDrive41;
     public static Gyro driveTrainGyro;
-    public static DoubleSolenoid shooterLeftSolenoidShoot;
-    public static DoubleSolenoid shooterRightSolenoidShoot;
+    public static DoubleSolenoid shooterSolenoidShoot;
     public static DoubleSolenoid shooterKickerSolenoid;
     public static CANJaguar pickupRollerJag;
     public static DoubleSolenoid pickupPickupSolenoid;
@@ -83,14 +82,10 @@ public class RobotMap {
         driveTrainRobotDrive41.setInvertedMotor(RobotDrive.MotorType.kRearRight, true);
         driveTrainGyro = new Gyro(1, 1);
 	LiveWindow.addSensor("DriveTrain", "Gyro", driveTrainGyro);
-        driveTrainGyro.setSensitivity(0.007);
-        shooterLeftSolenoidShoot = new DoubleSolenoid(1, 1, 2);      
-	
+        driveTrainGyro.setSensitivity(0.007);	
         
-        shooterRightSolenoidShoot = new DoubleSolenoid(1, 3, 4);      
-	
-        
-        shooterKickerSolenoid = new DoubleSolenoid(1, 5, 6);      
+        shooterSolenoidShoot = new DoubleSolenoid(1, 1, 2);
+        shooterKickerSolenoid = new DoubleSolenoid(1, 2, 3);      
 	
         
         try { 
@@ -100,10 +95,10 @@ public class RobotMap {
         }
 	
         
-        pickupPickupSolenoid = new DoubleSolenoid(1, 7, 8);      
+        pickupPickupSolenoid = new DoubleSolenoid(1, 5, 6);      
 	
         
-        pickupCatchSolenoid = new DoubleSolenoid(2, 1, 2);      
+        pickupCatchSolenoid = new DoubleSolenoid(1, 7, 8);      
 	
         
         servoSubstServo = new Servo(1, 2);

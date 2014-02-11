@@ -9,10 +9,7 @@
 // it from being updated in th future.
 package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.command.Command;
-import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
-import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Pickup;
 import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.Shooter;
@@ -24,6 +21,7 @@ public class Shoot extends Command {
 
     Shooter theSubst = Robot.shooter;
     Pickup thePickup = Robot.pickup;
+    //DoubleSolenoid theOtherPiston = RobotMap.shooterRightSolenoidShoot;
     int theTimer = 0, someValue = 10;
 
     public Shoot() {
@@ -37,50 +35,47 @@ public class Shoot extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-
-        //open the arms so we have space to shoot them in!
+        //MOVE OUTTA THE WAY IM LOBBIN DIS BALL HERE
         if (Robot.armIsOpen == false) {
-        thePickup.openWide();
-        Robot.armIsOpen = true;
+            thePickup.openWide();
+            Robot.armIsOpen = true;
         }
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+        theSubst.rightActivate();
         try {
             Thread.currentThread().sleep(250);
         } catch (InterruptedException ex) {
             ex.printStackTrace();
         }
-        theSubst.KickActivate();
-       //left and right are already activated, so we don't set them.
+    }
 
-       //We wait a little bit before unkicking; by then we have enough momentum.
-        //someValue can be changed to modify the timer.
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+        //Use 1 piston
+
+        theSubst.KickActivate();
         theTimer++;
-        if (theTimer < someValue) {
+        if (theTimer > someValue) {
             theSubst.unKick();
         }
+
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+
+        //this is true when we're done, just like in our execute().
         return theTimer > someValue;
     }
 
     // Called once after isFinished returns true
     protected void end() {
         theSubst.unKick();
-        theSubst.dualDeactivate();
-        theSubst.dualActivate();
-        Robot.servoSubst.toggle90Degrees(false);
+        theSubst.rightDeactivate();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-
-        //Ungrateful little...
         end();
     }
 }

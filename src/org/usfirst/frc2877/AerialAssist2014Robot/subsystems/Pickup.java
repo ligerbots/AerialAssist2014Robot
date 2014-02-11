@@ -63,6 +63,10 @@ public class Pickup extends Subsystem {
         Robot.armIsOpen = false;
         SmartDashboard.putString("Pickup", "Close");
     }
+    
+    public void offPickup() {
+        pickupSolenoid.set(DoubleSolenoid.Value.kOff);
+    }
 
     public void openCatch() {
         catchSolenoid.set(DoubleSolenoid.Value.kForward);
