@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package org.usfirst.frc2877.AerialAssist2014Robot.commands;
+
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
@@ -25,8 +26,10 @@ public class SmashboardCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//        SmartDashboard.putNumber("PSIMonit", pressure);
-//        SmartDashboard.putNumber("PSIMonitNum", pressure);
+        double pressure = Robot.PRESSURE_MAX
+                * Robot.currentMoles / Robot.MAX_MOLES;
+        SmartDashboard.putNumber("PSIMonit", pressure);
+        SmartDashboard.putNumber("PSIMonitNum", pressure);
     }
 
     // Make this return true when this Command no longer needs to run execute()
