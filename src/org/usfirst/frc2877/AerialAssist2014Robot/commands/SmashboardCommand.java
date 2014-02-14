@@ -12,9 +12,9 @@ import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
  *
  * @author Shiv
  */
-public class PressureMonitorCommand extends Command {
+public class SmashboardCommand extends Command {
 
-    public PressureMonitorCommand() {
+    public SmashboardCommand() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -25,10 +25,8 @@ public class PressureMonitorCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        int maxVolume = Robot.NUMBER_TANKS * Robot.TANK_VOLUME;
-        int pressure = Robot.pressureMax * Robot.totalVolume / maxVolume;
-        SmartDashboard.putNumber("PSIMonit", pressure);
-        SmartDashboard.putNumber("PSIMonitNum", pressure);
+//        SmartDashboard.putNumber("PSIMonit", pressure);
+//        SmartDashboard.putNumber("PSIMonitNum", pressure);
     }
 
     // Make this return true when this Command no longer needs to run execute()

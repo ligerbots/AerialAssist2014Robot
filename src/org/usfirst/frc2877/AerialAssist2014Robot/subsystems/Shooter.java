@@ -38,22 +38,22 @@ public class Shooter extends Subsystem {
 
     public void rightActivate() {
         shootSolenoid.set(DoubleSolenoid.Value.kForward);
+        Robot.currentMoles -= Robot.molesOfAir(Robot.SHOOTER_CYLINDER_VOLUME);
     }
 
     public void KickActivate() {
         kickerSolenoid.set(DoubleSolenoid.Value.kForward);
+        Robot.currentMoles -= Robot.molesOfAir(Robot.TRIGGER_VOLUME);
     }
 
     public void rightDeactivate() {
         shootSolenoid.set(DoubleSolenoid.Value.kForward);
-        Robot.totalVolume -= Robot.SHOOTER_POWER_ACTUATOR_VOLUME;
     }
 
     public void unKick() {
         //kick back... take a seat...
         //Undoes kickActivate().
         kickerSolenoid.set(DoubleSolenoid.Value.kReverse);
-        Robot.totalVolume -= Robot.SHOOTER_KICKER_ACTUATOR_VOLUME;
     }
 
     //Shortcuts for functions.

@@ -47,36 +47,36 @@ public class Pickup extends Subsystem {
         } catch (edu.wpi.first.wpilibj.can.CANTimeoutException ex) {
             System.out.println("Timeout Exception on ");
         }
-
     }
 
     //these next 4 functions do exactly what their names say they do.
     public void openPickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kForward);
+        Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         Robot.armIsOpen = true;
         SmartDashboard.putString("Pickup", "Open");
     }
 
     public void closePickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
-        Robot.totalVolume -= Robot.PICKUP_ACTUATOR_VOLUME;
         Robot.armIsOpen = false;
+        Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         SmartDashboard.putString("Pickup", "Close");
     }
-    
+
     public void offPickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     public void openCatch() {
         catchSolenoid.set(DoubleSolenoid.Value.kForward);
+        Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         SmartDashboard.putString("Catch", "Open");
-
     }
 
     public void closeCatch() {
         catchSolenoid.set(DoubleSolenoid.Value.kReverse);
-        Robot.totalVolume -= Robot.PICKUP_ACTUATOR_VOLUME;
+        Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         SmartDashboard.putString("Catch", "Close");
     }
 
