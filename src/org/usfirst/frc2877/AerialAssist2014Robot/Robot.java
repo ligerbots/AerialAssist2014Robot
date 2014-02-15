@@ -45,7 +45,7 @@ public class Robot extends IterativeRobot {
     public static final int TANK_VOLUME = 44;
     public static final int PRESSURE_MAX = 115;
     public static final int MAX_VOLUME = NUMBER_TANKS * TANK_VOLUME;
-    public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
+    public static final double MAX_MOLES = molesOfAir(MAX_VOLUME); 
     public static double currentMoles;
 
     /**

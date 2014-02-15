@@ -39,6 +39,7 @@ public class Pickup extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
+    // runRoller
     public void runRoller(int state) {
         //set to 0 to do nothing
         //1 and -1 set the rollers to go forward and reverse, not necessarily in that order.
