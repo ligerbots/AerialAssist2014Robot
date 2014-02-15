@@ -37,7 +37,6 @@ public class Turn1080DegreesLulz extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         System.out.println("Woot!");
-
         if (whichWay1080 == true) {
             double gyroAngle = Robot.driveTrain.getCurrentAngle();
             double gyroDrivePass = (1080.0 - gyroAngle) / 1080.0;

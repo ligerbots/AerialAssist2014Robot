@@ -39,10 +39,11 @@ public class Pickup extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    // runRoller
+    //Run the pickup roller
     public void runRoller(int state) {
         //set to 0 to do nothing
-        //1 and -1 set the rollers to go forward and reverse, not necessarily in that order.
+        //1 and -1 set the rollers to go forward and reverse
+        //Not necessarily in that order.
         try {
             rollerJag.setX(state);
         } catch (edu.wpi.first.wpilibj.can.CANTimeoutException ex) {
@@ -50,7 +51,7 @@ public class Pickup extends Subsystem {
         }
     }
 
-    //these next 4 functions do exactly what their names say they do.
+    //Open the pickup - brings it out
     public void openPickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kForward);
         Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
@@ -58,6 +59,7 @@ public class Pickup extends Subsystem {
         SmartDashboard.putString("Pickup", "Open");
     }
 
+    //Close the pickup - brings it in
     public void closePickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
         Robot.armIsOpen = false;
@@ -65,33 +67,36 @@ public class Pickup extends Subsystem {
         SmartDashboard.putString("Pickup", "Close");
     }
 
+    //Turn off the pickup - maintains current position
     public void offPickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 
-    public void openCatch() {
+    //Open the catch - brings out the secondary arm
+    public void openSecondary() {
         catchSolenoid.set(DoubleSolenoid.Value.kForward);
         Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         SmartDashboard.putString("Catch", "Open");
     }
 
-    public void closeCatch() {
+    //Close the catch - brings in the secondary arm
+    public void closeSecondary() {
         catchSolenoid.set(DoubleSolenoid.Value.kReverse);
         Robot.currentMoles -= Robot.molesOfAir(Robot.PICKUP_VOLUME);
         SmartDashboard.putString("Catch", "Close");
     }
-
-    //These 2 functions are shortcuts! 
+    
+    //Open both the pickup and secondary arms
     public void openWide() {
         //This function is a shortcut to open everything.
-        openCatch();
+        openSecondary();
         openPickup();
     }
 
+    //Close the pickup and secondary arms
     public void shutUp() {
         //But... but...
-        //This function closes the catch and the pickup.
-        closeCatch();
+        closeSecondary();
         closePickup();
     }
 }
