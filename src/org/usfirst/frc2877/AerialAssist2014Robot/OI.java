@@ -61,6 +61,10 @@ public class OI {
     public JoystickButton shootButton;
     public JoystickButton lobButton;
     public JoystickButton toggleArmsButton;
+    
+    public JoystickButton closePickupButton;
+    public JoystickButton openPickupButton;
+    
     public JoystickButton rollerReverseButton;
     public JoystickButton toggleDriveShooterMode;
     public Joystick joystick;
@@ -75,8 +79,15 @@ public class OI {
         toggleDriveShooterMode.whenPressed(new DriveShooterModeToggle());
         rollerReverseButton = new JoystickButton(joystick, 3);
         rollerReverseButton.whileHeld(new RollerReverse());
+        
         toggleArmsButton = new JoystickButton(joystick, 1);
         toggleArmsButton.whenPressed(new TogglePickup());
+        
+        openPickupButton = new JoystickButton(joystick, 15); //CHANGE MY BUTTON
+        closePickupButton = new JoystickButton(joystick, 16); //OOH OOH ME TOO
+        openPickupButton.whenPressed(new OpenPickup());
+        closePickupButton.whenPressed(new ClosePickup());
+        
         lobButton = new JoystickButton(joystick, 5);
         lobButton.whenPressed(new Shoot());
         shootButton = new JoystickButton(joystick, 6);
