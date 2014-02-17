@@ -44,27 +44,27 @@ public class RobotMap {
         try { 
             driveTrainLeftFrontJag = new CANJaguar(2);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            System.out.println("************** CANJag 2 FAILED: " + ex.getMessage());
         }
         
         try { 
             driveTrainLeftRearJag = new CANJaguar(3);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            System.out.println("************** CANJag 3 FAILED: " + ex.getMessage());
         }
 	
         
         try { 
             driveTrainRightFrontJag = new CANJaguar(5);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            System.out.println("************** CANJag 5 FAILED: " + ex.getMessage());
         }
 	
         
         try { 
             driveTrainRightRearJag = new CANJaguar(6);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            System.out.println("************** CANJag 6 FAILED: " + ex.getMessage());
         }
 	
         
@@ -89,7 +89,7 @@ public class RobotMap {
         try { 
             pickupRollerJag = new CANJaguar(4);
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+            System.out.println("************** CANJag 4 FAILED: " + ex.getMessage());
         }
 	
         pickupPickupSolenoid = new DoubleSolenoid(1, 5, 6);      
