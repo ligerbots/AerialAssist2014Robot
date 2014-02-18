@@ -68,9 +68,10 @@ public class Turn90Right extends Command {
         }
         if (rightTime >= maxRight) {
             isFinished = true;
-            System.out.println("Turn90Right Aborted- Too Long");
+            System.out.println("Turn90Right Aborted- 3 Seconds");
             //Cuts the turn off after 3 seconds so if the gyro breaks or comes unplugged
             //we aren't locked out of the drive
+            //Note that this won't say that the turn finished
         }
         return isFinished;
     }

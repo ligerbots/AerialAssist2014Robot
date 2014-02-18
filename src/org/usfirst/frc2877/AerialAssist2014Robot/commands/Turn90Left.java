@@ -74,9 +74,10 @@ protected boolean isFinished() {
         }
         if (leftTime >= maxLeft) {
             isFinished = true;
-            System.out.println("Turn90Left Aborted- Too Long");
+            System.out.println("Turn90Left Aborted- 3 Seconds");
             //Cuts the turn off after 3 seconds so if the gyro breaks or comes unplugged
             //we aren't locked out of the drive
+            //Note that this won't say that the turn finished
         }
         return isFinished;
     }
