@@ -108,6 +108,7 @@ public class Robot extends IterativeRobot {
         }
         drive.start();
         smashboardCommand.start();
+        RobotMap.pneumaticPusherPushCompressor.start();
     }
 
     /**
