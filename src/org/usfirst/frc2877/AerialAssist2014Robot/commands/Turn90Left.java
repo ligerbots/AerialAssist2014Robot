@@ -13,10 +13,12 @@ import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 
+
 /**
  *
  */
 public class Turn90Left extends Command {
+    int leftTime = 0, maxLeft = 150; //150 = 50 (ticks/second) * 3 (seconds)
 
     public Turn90Left() {
         // Use requires() here to declare subsystem dependencies
@@ -53,6 +55,7 @@ public class Turn90Left extends Command {
             }
         }
         Robot.driveTrain.drive(gyroDrivePass, 0);
+        leftTime++;
 
     }
 
@@ -68,6 +71,12 @@ protected boolean isFinished() {
         boolean isFinished = (gyroAngle > 89.0 && gyroAngle < 91.0);
         if (isFinished) {
             System.out.println("Turn90Left Finished");
+        }
+        if (leftTime >= maxLeft) {
+            isFinished = true;
+            System.out.println("Turn90Left Aborted- Too Long");
+            //Cuts the turn off after 3 seconds so if the gyro breaks or comes unplugged
+            //we aren't locked out of the drive
         }
         return isFinished;
     }
