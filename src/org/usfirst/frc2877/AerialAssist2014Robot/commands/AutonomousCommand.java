@@ -19,8 +19,8 @@ import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 public class AutonomousCommand extends CommandGroup {
 
     public AutonomousCommand() {
-        addSequential(new AutonomousDrive(100));
-        addSequential(new Turn90Left());
+    //    addSequential(new AutonomousDrive(100));
+       // addSequential(new Turn90Left());
         addSequential(new Shoot());
         
     }

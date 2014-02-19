@@ -32,8 +32,8 @@ public class RollerReverse extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (Robot.armIsOpen) {
-            Robot.pickup.runRoller(-1);
+        if (Robot.pickupIsOpen) {
+            //Robot.pickup.runRoller(-1);
         }
     }
 
@@ -44,8 +44,8 @@ public class RollerReverse extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-        if (Robot.armIsOpen = false) {
-            Robot.pickup.runRoller(0);
+        if (Robot.pickupIsOpen = false) {
+            //Robot.pickup.runRoller(0);
         }
     }
 

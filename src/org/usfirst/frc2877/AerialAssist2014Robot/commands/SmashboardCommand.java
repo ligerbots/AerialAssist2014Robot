@@ -30,6 +30,9 @@ public class SmashboardCommand extends Command {
                 * Robot.currentMoles / Robot.MAX_MOLES;
         SmartDashboard.putNumber("PSIMonit", pressure);
         SmartDashboard.putNumber("PSIMonitNum", pressure);
+        SmartDashboard.putBoolean("CanShoot", (Robot.pickupIsOpen 
+                && Robot.secondaryIsOpen 
+                && Robot.shooterIsPressurized));
     }
 
     // Make this return true when this Command no longer needs to run execute()

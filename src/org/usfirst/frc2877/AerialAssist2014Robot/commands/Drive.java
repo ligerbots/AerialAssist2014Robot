@@ -11,6 +11,7 @@
 
 package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
+import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 
@@ -33,7 +34,7 @@ public class  Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double x = Robot.oi.joystick.getX();
+        double x = Robot.oi.joystick.getX(GenericHID.Hand.kRight);
         double y = Robot.oi.joystick.getY();
         Robot.driveTrain.drive(x,y);
     }

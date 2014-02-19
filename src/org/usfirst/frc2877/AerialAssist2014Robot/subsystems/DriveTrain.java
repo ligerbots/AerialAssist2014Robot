@@ -37,15 +37,15 @@ public class DriveTrain extends Subsystem {
         if (robotDrive41 != null) {
             //this is reversed because of the default variable names, which are moveValue and rotateValue, IN THAT ORDER.
             //since the Y controls going forward, we put Y first. If when you press up the robot turns, undo this.
-            if (Robot.driveModeIsShoot) {
+//            if (Robot.driveModeIsShoot) {
                 robotDrive41.arcadeDrive(vC * x, vC * y);
                 SmartDashboard.putNumber("ArcadeDriveX", vC * x);
                 SmartDashboard.putNumber("ArcadeDriveY", vC * y);
-            } else if (!Robot.driveModeIsShoot) {
-                robotDrive41.arcadeDrive(0, vC * x);
-                SmartDashboard.putNumber("ArcadeDriveX", 0);
-                SmartDashboard.putNumber("ArcadeDriveY", vC * x);
-            }
+//            } else if (!Robot.driveModeIsShoot) {
+//                robotDrive41.arcadeDrive(0, vC * x);
+//                SmartDashboard.putNumber("ArcadeDriveX", 0);
+//                SmartDashboard.putNumber("ArcadeDriveY", vC * x);
+//            }
             //Despite what the function looks like it says, you do actually want
             //arcadeDrive.(x,y), not (y,x). AAAARRRRRGH.
         }
