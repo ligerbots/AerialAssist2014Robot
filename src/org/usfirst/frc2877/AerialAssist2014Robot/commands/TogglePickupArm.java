@@ -34,16 +34,15 @@ public class TogglePickupArm extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         toggleValue = !toggleValue;
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-        //The 1 and -1 may need to be swapped in the future. 
         if (toggleValue) {
             pickupSubst.openPickup();
         } else if (!toggleValue) {
             pickupSubst.closePickup();
         }
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
         //Increment the timer, and check that its with the bounds 
         //of maximum time
         theTimer++;

@@ -21,6 +21,9 @@ public class AutonomousCommand extends CommandGroup {
     public AutonomousCommand() {
     //    addSequential(new AutonomousDrive(100));
        // addSequential(new Turn90Left());
+        addParallel(new TogglePickupArm());
+        addParallel(new ToggleSecondaryArm());
+        addParallel(new PressurizeShooter());
         addSequential(new Shoot());
         
     }

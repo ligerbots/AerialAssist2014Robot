@@ -74,7 +74,7 @@ public class OI {
         toggleSecondaryButton.whenPressed(toggleSecondary);
         shootButton = new JoystickButton(joystick, 1);
         shootButton.whenPressed(new Shoot());
-        shootPressureButton = new JoystickButton(joystick, 14);
+        shootPressureButton = new JoystickButton(joystick, 8);
         shootPressureButton.whenPressed(new PressurizeShooter());
         //turn90RightButton = new JoystickButton(joystick, 14);
         //turn90RightButton.whenPressed(new Turn90Right());

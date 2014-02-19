@@ -86,8 +86,8 @@ public class RobotMap {
 	LiveWindow.addSensor("DriveTrain", "Gyro", driveTrainGyro);
         driveTrainGyro.setSensitivity(0.007);	
         
-        shooterSolenoidShoot = new DoubleSolenoid(7, 8);
-        shooterKickerSolenoid = new DoubleSolenoid(5, 6);      
+        shooterSolenoidShoot = new DoubleSolenoid(6, 5);
+        shooterKickerSolenoid = new DoubleSolenoid(7, 8);      
 	
         
         try { 
@@ -97,8 +97,8 @@ public class RobotMap {
             System.out.println("************** CANJag 4 FAILED: " + ex.getMessage());
         }
 	
-        pickupPickupSolenoid = new DoubleSolenoid(3, 4);      
-        pickupSecondarySolenoid = new DoubleSolenoid(1, 2);      
+        pickupPickupSolenoid = new DoubleSolenoid(4, 3);      
+        pickupSecondarySolenoid = new DoubleSolenoid(2, 1);      
 	
         pneumaticPusherPushCompressor = new Compressor(1, 1);
         pneumaticPusherPushCompressor.start(); 

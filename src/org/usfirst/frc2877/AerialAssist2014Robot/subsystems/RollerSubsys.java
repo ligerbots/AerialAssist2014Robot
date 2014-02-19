@@ -22,7 +22,7 @@ public class RollerSubsys extends Subsystem {
     protected void initDefaultCommand() {
     }
     
-    public void runRoller(int x){
+    public void runRoller(double x){
         try {
             rollerJaguar.setX(x);
         } catch (CANTimeoutException ex) {

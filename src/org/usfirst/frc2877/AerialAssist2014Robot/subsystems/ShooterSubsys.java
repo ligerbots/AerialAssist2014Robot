@@ -36,22 +36,30 @@ public class ShooterSubsys extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
 
-    public void shootActivate() {
+    public void shootExtend() {
         shootSolenoid.set(DoubleSolenoid.Value.kForward);
         Robot.currentMoles -= Robot.molesOfAir(Robot.SHOOTER_CYLINDER_VOLUME);
     }
 
-    public void kickActivate() {
+    public void kickExtend() {
         kickerSolenoid.set(DoubleSolenoid.Value.kForward);
         Robot.currentMoles -= Robot.molesOfAir(Robot.TRIGGER_VOLUME);
     }
 
+    public void shootRetract() {
+        shootSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+
+    public void kickRetract() {
+        kickerSolenoid.set(DoubleSolenoid.Value.kReverse);
+    }
+    
     public void shootDeactivate() {
-        shootSolenoid.set(DoubleSolenoid.Value.kForward);
+        shootSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     public void kickDeactivate() {
         //kick back... take a seat...
-        kickerSolenoid.set(DoubleSolenoid.Value.kReverse);
+        kickerSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 }

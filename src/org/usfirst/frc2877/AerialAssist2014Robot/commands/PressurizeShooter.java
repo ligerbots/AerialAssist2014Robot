@@ -17,7 +17,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.ShooterSubsys;
 public class PressurizeShooter extends Command {
 
     ShooterSubsys shootSubsys = Robot.shooter;
-    int theTimer = 0, maxTime = 50;
+    int theTimer, maxTime = 50;
     
     public PressurizeShooter() {
         requires(Robot.shooter);
@@ -25,13 +25,16 @@ public class PressurizeShooter extends Command {
     
     protected void initialize() {
         Robot.shooterIsPressurized = false;
+        theTimer  = 0;
+        shootSubsys.shootExtend();
     }
 
     protected void execute() {
-        shootSubsys.shootActivate();
+
         theTimer++;
         if (theTimer > maxTime) {
             Robot.shooterIsPressurized = true;
+            System.out.println("Pressurized done.");
         }
     }
 
