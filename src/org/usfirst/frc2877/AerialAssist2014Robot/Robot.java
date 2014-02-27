@@ -9,10 +9,14 @@
 // it from being updated in th future.
 package org.usfirst.frc2877.AerialAssist2014Robot;
 
+import com.sun.squawk.microedition.io.FileConnection;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import java.io.DataInputStream;
+import javax.microedition.io.Connector;
 import org.usfirst.frc2877.AerialAssist2014Robot.commands.*;
 import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.*;
 
@@ -52,6 +56,8 @@ public class Robot extends IterativeRobot {
     public static final int MAX_VOLUME = NUMBER_TANKS * TANK_VOLUME;
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
+    public static final String OVERSHOOT_FILE = "file:///overshoot_angle.txt";
+    public static double OVERSHOOT_ANGLE = 15.0;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -95,6 +101,7 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) {
             autonomousCommand.start();
+            SmartDashboard.putNumber("OVERSHOOT_ANGLE", OVERSHOOT_ANGLE);
         }
     }
 
@@ -103,6 +110,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        RobotMap.jags.UpdateDashboard();
     }
 
     public void teleopInit() {
@@ -124,6 +132,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        RobotMap.jags.UpdateDashboard();
+        SmartDashboard.putNumber("OVERSHOOT_ANGLE", OVERSHOOT_ANGLE);
     }
 
     /**
@@ -132,4 +142,30 @@ public class Robot extends IterativeRobot {
     public void testPeriodic() {
         LiveWindow.run();
     }
+    public boolean readOvershoot() {
+        try {
+            // Persist our overshoot numbers to a file
+            DataInputStream file;
+            FileConnection fc;
+
+            fc = (FileConnection)Connector.open(OVERSHOOT_FILE, Connector.READ);
+            if (fc.exists()) {
+                file = fc.openDataInputStream();
+                System.out.println("Loading " + OVERSHOOT_FILE);
+                OVERSHOOT_ANGLE = file.readDouble();
+                System.out.println(OVERSHOOT_ANGLE);
+
+                file.close();
+                fc.close();
+            }
+            else { System.out.println("No " + OVERSHOOT_FILE); }
+        }
+        catch (Exception ex) {
+            System.out.println("File output error: " + ex.getMessage());
+        }
+
+
+        return true;
+    }
+
 }
