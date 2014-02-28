@@ -38,6 +38,15 @@ public class ShooterSubsys extends Subsystem {
     public void shootExtend() {
         shootSolenoid.set(DoubleSolenoid.Value.kForward);
         Robot.currentMoles -= Robot.molesOfAir(Robot.SHOOTER_CYLINDER_VOLUME);
+        /*         ______
+                  |noooo |
+          _____   | _____|
+         / .  .\  |/  \    ___________________
+        |   =o  \_    __  /\ Mole-sucking pipe 
+         \||/     \       \/__________________
+          |       /   /
+        .~~.~:~~~    /
+        */
     }
 
     public void kickExtend() {
@@ -48,7 +57,7 @@ public class ShooterSubsys extends Subsystem {
     public void shootRetract() {
         shootSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
-
+    //this code needs more bad puns
     public void kickRetract() {
         kickerSolenoid.set(DoubleSolenoid.Value.kReverse);
     }
@@ -58,7 +67,6 @@ public class ShooterSubsys extends Subsystem {
     }
 
     public void kickDeactivate() {
-        //kick back... take a seat...
         kickerSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 }

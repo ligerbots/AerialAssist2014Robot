@@ -152,7 +152,7 @@ public class Robot extends IterativeRobot {
             if (fc.exists()) {
                 file = fc.openDataInputStream();
                 System.out.println("Loading " + OVERSHOOT_FILE);
-                OVERSHOOT_ANGLE = file.readDouble();
+                OVERSHOOT_ANGLE = file.readDouble(); //override the default angle with this angle
                 System.out.println(OVERSHOOT_ANGLE);
 
                 file.close();
