@@ -26,7 +26,7 @@ public class RollerSubsys extends Subsystem {
         try {
             rollerJaguar.setX(x);
         } catch (CANTimeoutException ex) {
-            
-        }       
+            System.out.println("RollerJaguar timeoutException: " + ex.getMessage());
+        }
     }
 }

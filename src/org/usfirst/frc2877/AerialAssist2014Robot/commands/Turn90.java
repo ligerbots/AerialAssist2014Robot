@@ -19,7 +19,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
  */
 public class Turn90 extends Command {
     int m_leftTime = 0; //150 = 50 (ticks/second) * 3 (seconds)
-    double m_targetAngle = 90;
+    double m_targetAngle = 90; //gets overridden
     static double coarseTurn = 75.0;
     static double lowSpeed = 0.4;
     static double fullSpeed = 1.0;
@@ -45,12 +45,15 @@ public class Turn90 extends Command {
     protected void execute() {
         double gyroAngle = Robot.driveTrain.getCurrentAngle();
         double gyroDriveSpeed;
+        
+        int sign = m_targetAngle<0?-1:1;
+        
         if (Math.abs(m_targetAngle - gyroAngle) > coarseTurn) {
-                gyroDriveSpeed = fullSpeed;
+                gyroDriveSpeed = fullSpeed*sign;
         } else {
-            gyroDriveSpeed = lowSpeed;
+            gyroDriveSpeed = lowSpeed*sign;
         }
-        Robot.driveTrain.drive(gyroDriveSpeed, 0);
+        Robot.driveTrain.drive(0,gyroDriveSpeed);
         m_leftTime++;
     }
 
