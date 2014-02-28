@@ -22,11 +22,13 @@ public class RollerSubsys extends Subsystem {
     protected void initDefaultCommand() {
     }
     
-    public void runRoller(double x){
-        try {
-            rollerJaguar.setX(x);
-        } catch (CANTimeoutException ex) {
-            System.out.println("RollerJaguar timeoutException: " + ex.getMessage());
+    public void runRoller(double x) {
+        if (rollerJaguar != null) {
+            try {
+                rollerJaguar.setX(x);
+            } catch (CANTimeoutException ex) {
+                System.out.println("RollerJaguar timeoutException: " + ex.getMessage());
+            }
         }
     }
 }
