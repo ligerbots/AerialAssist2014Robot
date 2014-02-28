@@ -30,7 +30,7 @@ public class CANJag {
         try {
             m_jag = new CANJaguar(jagnum);
             System.out.println(" OK");
-        } catch (CANTimeoutException ex) {
+        } catch (Exception ex) {
             m_lasterror = ex.getMessage();
             System.out.println(" FAILED: " + m_lasterror);
             m_status = false;
@@ -47,7 +47,7 @@ public class CANJag {
     {
         try {
             m_voltage = m_jag.getOutputVoltage();
-        } catch  (CANTimeoutException ex) {
+        } catch  (Exception ex) {
             m_lasterror = ex.getMessage();
             System.out.println(m_lasterror + " " + m_description);
             m_status = false;
@@ -59,7 +59,7 @@ public class CANJag {
     public double getCurrent() {            
         try {
             m_current = m_jag.getOutputCurrent();
-        } catch  (CANTimeoutException ex) {
+        } catch  (Exception ex) {
             m_lasterror = ex.getMessage();
             System.out.println(m_lasterror + " " + m_description);
             m_status = false;
