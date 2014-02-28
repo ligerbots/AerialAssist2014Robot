@@ -25,7 +25,5 @@ public class AutonomousCommand extends CommandGroup {
         addParallel(new TogglePickupArm());
         addParallel(new ToggleSecondaryArm());
         addSequential(new Shoot());
-        
     }
-
 }
