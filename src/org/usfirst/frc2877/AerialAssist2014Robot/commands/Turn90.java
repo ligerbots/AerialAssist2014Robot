@@ -39,6 +39,7 @@ public class Turn90 extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
         RobotMap.driveTrainGyro.reset();
+        System.out.println("Turn started for " + m_targetAngle + " degrees.");
     }
 
     // Called repeatedly when this Command is scheduled to run

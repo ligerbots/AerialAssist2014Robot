@@ -49,7 +49,8 @@ public class CANJag {
             m_voltage = m_jag.getOutputVoltage();
         } catch  (Exception ex) {
             m_lasterror = ex.getMessage();
-            System.out.println(m_lasterror + " " + m_description);
+            // suppress this printout for Roadkill with broken 
+            //System.out.println(m_lasterror + " " + m_description);
             m_status = false;
             return 0.0;
         }
@@ -61,7 +62,8 @@ public class CANJag {
             m_current = m_jag.getOutputCurrent();
         } catch  (Exception ex) {
             m_lasterror = ex.getMessage();
-            System.out.println(m_lasterror + " " + m_description);
+            // suppress this printout for Roadkill with broken 
+            //System.out.println(m_lasterror + " " + m_description);
             m_status = false;
             return 0.0;
         }
