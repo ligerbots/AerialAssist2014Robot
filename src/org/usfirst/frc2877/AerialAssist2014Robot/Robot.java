@@ -45,11 +45,15 @@ public class Robot extends IterativeRobot {
     public static boolean pickupIsOpen = false;
     public static boolean secondaryIsOpen = false;
     public static boolean shooterIsPressurized = false;
-    public static final double SHOOTER_CYLINDER_VOLUME = 21;
+    // Shooter cylinder is 1.5" bore with 12" throw.
+    public static final double SHOOTER_CYLINDER_VOLUME = 21.2;
     public static final double SHOOTER_TANKS_VOLUME = 15;
-    public static final double TRIGGER_VOLUME = 7.068;
-    public static final double SECONDARY_VOLUME = 3.534;
-    public static final double PICKUP_VOLUME = 5.301;
+    // Trigger cylinder is 1.5" bore with 2" throw.
+    public static final double TRIGGER_VOLUME = 3.53;
+    // Secondary Arm cylinder is 0.75" bore with 6" throw.
+    public static final double SECONDARY_VOLUME = 2.65;
+    // Pickup Arm cylinder is 0.75" bore with 8" throw.
+    public static final double PICKUP_VOLUME = 3.53;
     public static final int NUMBER_TANKS = 11;
     public static final int TANK_VOLUME = 44;
     public static final int PRESSURE_MAX = 115;
