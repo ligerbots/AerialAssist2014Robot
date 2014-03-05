@@ -60,9 +60,11 @@ public class Robot extends IterativeRobot {
     public static final int MAX_VOLUME = NUMBER_TANKS * TANK_VOLUME;
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
+    public static double currentPressure;
     public static final String OVERSHOOT_FILE = "file:///overshoot_angle.txt";
     public static double OVERSHOOT_ANGLE = 15.0;
     public int ticks = 0;
+    public static double interruptPri = 0.02;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -102,6 +104,25 @@ public class Robot extends IterativeRobot {
         double moles = (atm * volume) / (0.0821 * 298);
         return moles;
     }
+    
+    public static double getPressure() {
+        // returns current pressure in PSI
+        double pressure = Robot.PRESSURE_MAX
+                * Robot.currentMoles / Robot.MAX_MOLES;
+        return pressure;
+    }
+    
+    public static double compressorVolumeSinceLastTick() {
+        // From the data sheet, the linear approximation to the air
+        // volume in cubic inches per second as a function of current
+        // pressure in PSI is
+        // airFlow = 22.765-0.171*psi
+        final double airFlowIntercept = 22.765;
+        final double airFlowSlope = -0.171;
+        double airFlow = airFlowIntercept + airFlowSlope * getPressure();
+        double cv = airFlow * interruptPri;
+        return cv;
+    }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
@@ -119,6 +140,10 @@ public class Robot extends IterativeRobot {
         ticks++;
         RobotMap.jags.UpdateDashboard();
         updateGyro();
+        // if the compressor is running, add air
+        if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
+            Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
+        }
     }
 
     public void teleopInit() {
@@ -143,6 +168,10 @@ public class Robot extends IterativeRobot {
         ticks++;
         RobotMap.jags.UpdateDashboard();
         updateGyro();
+        // if the compressor is running, add air
+        if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
+            Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
+        }
     }
 
     /**
