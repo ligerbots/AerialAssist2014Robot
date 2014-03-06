@@ -6,3 +6,5 @@
 *.ear
 /build/
 /nbproject/private/
+project.bak.xml
+project.xml

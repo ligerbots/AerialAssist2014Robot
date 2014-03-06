@@ -26,8 +26,7 @@ public class SmashboardCommand extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double pressure = Robot.PRESSURE_MAX
-                * Robot.currentMoles / Robot.MAX_MOLES;
+        double pressure = Robot.getPressure() ;
         SmartDashboard.putNumber("PSIMonit", pressure);
         SmartDashboard.putNumber("PSIMonitNum", pressure);
         SmartDashboard.putBoolean("CanShoot", (Robot.pickupIsOpen 
