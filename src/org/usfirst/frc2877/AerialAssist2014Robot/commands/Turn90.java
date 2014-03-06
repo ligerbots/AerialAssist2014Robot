@@ -56,6 +56,11 @@ public class Turn90 extends Command {
         }
         Robot.driveTrain.drive(0,gyroDriveSpeed);
         m_leftTime++;
+        if (m_leftTime % 5 ==0)
+        {
+            // print out Gyro Angle periodically during a turn
+            System.out.println("Gyro angle:" + gyroAngle);
+        }
     }
 
 

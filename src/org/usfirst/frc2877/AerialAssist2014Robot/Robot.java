@@ -212,7 +212,6 @@ public class Robot extends IterativeRobot {
         {
             double a = driveTrain.getCurrentAngle();
             SmartDashboard.putNumber("Gyro Angle", a);
-            System.out.println("Gyro angle:" + a);
             SmartDashboard.putNumber("OVERSHOOT_ANGLE", OVERSHOOT_ANGLE);
         }
 
