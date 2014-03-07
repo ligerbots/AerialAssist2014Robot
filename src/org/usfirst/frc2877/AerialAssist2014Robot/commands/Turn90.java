@@ -53,7 +53,7 @@ public class Turn90 extends Command {
         }
         else
         {
-            // e.g. gryo is -60, we're full speed until gyro is -75
+            // e.g. suppose gryo is -60, we stay full speed until gyro is -75
             gyroDriveSpeed = (gyroAngle > -coarseTurn) ? -fullSpeed : -lowSpeed;
         }
         
