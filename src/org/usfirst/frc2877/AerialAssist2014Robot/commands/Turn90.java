@@ -47,16 +47,14 @@ public class Turn90 extends Command {
         double gyroAngle = Robot.driveTrain.getCurrentAngle();
         double gyroDriveSpeed;
         
-        double sign = (m_targetAngle<0) ? -1.0 : 1.0;
-        
         if (m_targetAngle > 0)
         {
-            gyroDriveSpeed = ((gyroAngle + m_targetAngle) < coarseTurn) ? fullSpeed : lowSpeed;
+            gyroDriveSpeed = (gyroAngle < coarseTurn) ? fullSpeed : lowSpeed;
         }
         else
         {
-            // e.g. if (-45 - 15) < -75 we're full speed
-            gyroDriveSpeed = ((gyroAngle - m_targetAngle) > coarseTurn) ? -fullSpeed : -lowSpeed;
+            // e.g. gryo is -60, we're full speed until gyro is -75
+            gyroDriveSpeed = (gyroAngle > -coarseTurn) ? -fullSpeed : -lowSpeed;
         }
         
         Robot.driveTrain.drive(gyroDriveSpeed, 0);
@@ -83,8 +81,8 @@ public class Turn90 extends Command {
         }
         else
         {
-            // e.g. if (-60 - 15) < -90 we keep turning
-            isFinished = gyroAngle - Robot.OVERSHOOT_ANGLE_NEGATIVE < m_targetAngle;
+            // e.g. if (-60 - 15) > -90 we keep turning
+            isFinished = gyroAngle - Robot.OVERSHOOT_ANGLE_NEGATIVE > m_targetAngle;
         }
         
         if (isFinished) {
