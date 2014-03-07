@@ -17,16 +17,25 @@ import javax.microedition.io.Connector;
 public class OvershootChange extends Command {
         private double m_direction;
         private double m_value;
+        private int m_sign;
 
-        public OvershootChange(double direction, double value) 
+        public OvershootChange(int sign, double direction, double value) 
         {
             // we're ignoring direction for now
+            m_sign = sign;  // +1 or -1
             m_direction = direction;
             m_value = value;
          }
         
         protected void initialize() {
-            Robot.OVERSHOOT_ANGLE += m_value; 
+            if (m_sign> 0)
+            {
+                Robot.OVERSHOOT_ANGLE_POSITIVE += m_value; 
+            }
+            else
+            {
+                Robot.OVERSHOOT_ANGLE_NEGATIVE += m_value;
+            }
 
             try {
                 // Persist our overshoot numbers to a file
@@ -36,8 +45,10 @@ public class OvershootChange extends Command {
                 System.out.println("Saving " + Robot.OVERSHOOT_FILE);
                 fc.create();
                 file = fc.openDataOutputStream();
-                file.writeDouble(Robot.OVERSHOOT_ANGLE);
-                System.out.println(Robot.OVERSHOOT_ANGLE);
+                file.writeDouble(Robot.OVERSHOOT_ANGLE_POSITIVE);
+                System.out.println(Robot.OVERSHOOT_ANGLE_POSITIVE);
+                file.writeDouble(Robot.OVERSHOOT_ANGLE_NEGATIVE);
+                System.out.println(Robot.OVERSHOOT_ANGLE_NEGATIVE);
                 file.flush();
                 file.close();
                 fc.close();

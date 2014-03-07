@@ -61,8 +61,9 @@ public class Robot extends IterativeRobot {
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
     public static double currentPressure;
-    public static final String OVERSHOOT_FILE = "file:///overshoot_angle.txt";
-    public static double OVERSHOOT_ANGLE = 15.0;
+    public static final String OVERSHOOT_FILE = "file:///overshoot_angle2.txt";
+    public static double OVERSHOOT_ANGLE_NEGATIVE = 12.0;
+    public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
     public int ticks = 0;
     public static double interruptPri = 0.02;
 
@@ -129,7 +130,6 @@ public class Robot extends IterativeRobot {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) {
             autonomousCommand.start();
-            SmartDashboard.putNumber("OVERSHOOT_ANGLE", OVERSHOOT_ANGLE);
         }
     }
 
@@ -138,9 +138,7 @@ public class Robot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
-        ticks++;
-        RobotMap.jags.UpdateDashboard();
-        updateGyro();
+        updateDashboard();
         // if the compressor is running, add air
         if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
             Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
@@ -166,9 +164,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        ticks++;
-        RobotMap.jags.UpdateDashboard();
-        updateGyro();
+        updateDashboard();
         // if the compressor is running, add air
         if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
             Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
@@ -190,10 +186,10 @@ public class Robot extends IterativeRobot {
             fc = (FileConnection)Connector.open(OVERSHOOT_FILE, Connector.READ);
             if (fc.exists()) {
                 file = fc.openDataInputStream();
-                System.out.println("Loading " + OVERSHOOT_FILE);
-                OVERSHOOT_ANGLE = file.readDouble(); //override the default angle with this angle
-                System.out.println(OVERSHOOT_ANGLE);
-
+                System.out.print("Loading " + OVERSHOOT_FILE + ", +angle: ");
+                OVERSHOOT_ANGLE_POSITIVE = file.readDouble(); //override the default + angle with this angle
+                OVERSHOOT_ANGLE_NEGATIVE = file.readDouble(); //override the default - angle with this angle
+                System.out.println(OVERSHOOT_ANGLE_POSITIVE + " -angle: " + OVERSHOOT_ANGLE_NEGATIVE);
                 file.close();
                 fc.close();
             }
@@ -207,13 +203,14 @@ public class Robot extends IterativeRobot {
         return true;
     }
     
-    public void updateGyro()
+    public void updateDashboard()
     {
-        if (ticks%5==0)
+        if ((ticks++)%5==0)
         {
-            double a = driveTrain.getCurrentAngle();
-            SmartDashboard.putNumber("Gyro Angle", a);
-            SmartDashboard.putNumber("OVERSHOOT_ANGLE", OVERSHOOT_ANGLE);
+            RobotMap.jags.UpdateDashboard();
+            SmartDashboard.putNumber("Gyro Angle", driveTrain.getCurrentAngle());
+            SmartDashboard.putNumber("OVERSHOOT_ANGLE_POSITIVE", OVERSHOOT_ANGLE_POSITIVE);
+            SmartDashboard.putNumber("OVERSHOOT_ANGLE_NEGATIVE", OVERSHOOT_ANGLE_NEGATIVE);
         }
 
     }

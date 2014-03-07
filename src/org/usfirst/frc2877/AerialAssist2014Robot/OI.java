@@ -88,12 +88,18 @@ public class OI {
         //turn90LeftButton = new JoystickButton(joystick, 13);
         //turn90LeftButton.whenPressed(new Turn90Left());
         joystick2 = new Joystick(2);
-        JoystickButton overShootUpPlus = new JoystickButton(joystick2, 9);
-        JoystickButton overShootUpMinus = new JoystickButton(joystick2, 11);
+        JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 10);
+        JoystickButton overShootUpPositiveMinus = new JoystickButton(joystick2, 12);
+        JoystickButton overShootUpNegativePlus = new JoystickButton(joystick2, 10);
+        JoystickButton overShootUpNegativeMinus = new JoystickButton(joystick2, 12);
         
-        overShootUpPlus.whenPressed(new OvershootChange(1.0,1.0));
-        overShootUpMinus.whenPressed(new OvershootChange(1.0,-1.0));
-
+        
+        overShootUpPostivePlus.whenPressed(new OvershootChange(1, 1.0,1.0));
+        overShootUpPositiveMinus.whenPressed(new OvershootChange(1, 1.0,-1.0));
+        overShootUpNegativePlus.whenPressed (new OvershootChange(-1, 1.0,1.0));
+        overShootUpNegativeMinus.whenPressed (new OvershootChange(-1, 1.0,-1.0));
+           
+  
         // SmartDashboard Buttons
 //        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());
 //        SmartDashboard.putData("Drive", new Drive());
