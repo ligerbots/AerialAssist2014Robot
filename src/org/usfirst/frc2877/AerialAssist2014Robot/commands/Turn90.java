@@ -77,12 +77,12 @@ public class Turn90 extends Command {
         boolean isFinished;
         if (m_targetAngle > 0)
         {
-          isFinished = gyroAngle + Robot.OVERSHOOT_ANGLE_POSITIVE > m_targetAngle;
+            isFinished = gyroAngle + Robot.OVERSHOOT_ANGLE_POSITIVE > m_targetAngle;
         }
         else
         {
-            // e.g. if (-60 - 15) > -90 we keep turning
-            isFinished = gyroAngle - Robot.OVERSHOOT_ANGLE_NEGATIVE > m_targetAngle;
+            // e.g. once (-76 - 15) < -90 we're done
+            isFinished = gyroAngle - Robot.OVERSHOOT_ANGLE_NEGATIVE < m_targetAngle;
         }
         
         if (isFinished) {
