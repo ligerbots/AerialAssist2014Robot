@@ -90,8 +90,8 @@ public class OI {
         joystick2 = new Joystick(2);
         JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 10);
         JoystickButton overShootUpPositiveMinus = new JoystickButton(joystick2, 12);
-        JoystickButton overShootUpNegativePlus = new JoystickButton(joystick2, 10);
-        JoystickButton overShootUpNegativeMinus = new JoystickButton(joystick2, 12);
+        JoystickButton overShootUpNegativePlus = new JoystickButton(joystick2, 9);
+        JoystickButton overShootUpNegativeMinus = new JoystickButton(joystick2, 11);
         
         
         overShootUpPostivePlus.whenPressed(new OvershootChange(1, 1.0,1.0));
