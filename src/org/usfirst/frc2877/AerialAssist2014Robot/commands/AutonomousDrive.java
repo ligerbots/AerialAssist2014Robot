@@ -17,6 +17,7 @@ public class AutonomousDrive extends Command {
     int time = 0;
     boolean done = false;
     int m_finish;
+    double m_gyro;
 
     public AutonomousDrive(int finish) {
         // Use requires() here to declare subsystem dependencies
@@ -33,7 +34,8 @@ public class AutonomousDrive extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         time++;
-        Robot.driveTrain.drive(0, -0.7);
+        m_gyro = Robot.driveTrain.getCurrentAngle();
+        Robot.driveTrain.drive(m_gyro/Robot.AUTONOMOUS_DRIVE_GAIN, -0.7);
         if (time > m_finish) {
             done = true;
         }

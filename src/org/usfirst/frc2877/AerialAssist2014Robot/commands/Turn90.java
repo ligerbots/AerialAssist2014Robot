@@ -21,7 +21,7 @@ public class Turn90 extends Command {
     int m_leftTime = 0; //150 = 50 (ticks/second) * 3 (seconds)
     double m_targetAngle = 90; //gets overridden
     static double coarseTurn = 75.0;
-    static double lowSpeed = 0.7;
+    static double lowSpeed = 0.4;
     static double fullSpeed = 0.8;
     static int maxTime = 60;
 
@@ -49,12 +49,24 @@ public class Turn90 extends Command {
         
         if (m_targetAngle > 0)
         {
-            gyroDriveSpeed = (gyroAngle < coarseTurn) ? fullSpeed : lowSpeed;
+            // gyroDriveSpeed starts out at max and then reduces as we get
+            // close to target
+            gyroDriveSpeed = fullSpeed * (m_targetAngle - gyroAngle) / m_targetAngle;
+            // don't let speed get too slow or we will stop turning too soon
+            if (gyroDriveSpeed < lowSpeed) {
+                gyroDriveSpeed = lowSpeed;
+            }
         }
         else
         {
-            // e.g. suppose gryo is -60, we stay full speed until gyro is -75
-            gyroDriveSpeed = (gyroAngle > -coarseTurn) ? -fullSpeed : -lowSpeed;
+            // gyroDriveSpeed starts out at -1.0 and then increases as we get
+            // close to target
+            // For example if m_targetAngle = -90 and we have turned -45 degrees
+            // then gyroDriveSpeed = (-90 - -45)/-(-90) = -0.5
+            gyroDriveSpeed = fullSpeed * (m_targetAngle - gyroAngle) / -m_targetAngle;
+            if (gyroDriveSpeed > -lowSpeed) {
+                gyroDriveSpeed = -lowSpeed;
+            }
         }
         
         Robot.driveTrain.drive(gyroDriveSpeed, 0);

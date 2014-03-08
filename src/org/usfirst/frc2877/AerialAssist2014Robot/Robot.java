@@ -64,6 +64,10 @@ public class Robot extends IterativeRobot {
     public static final String OVERSHOOT_FILE = "file:///overshoot_angle2.txt";
     public static double OVERSHOOT_ANGLE_NEGATIVE = 12.0;
     public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
+    // Gain factor to use gyro to keep the robot straight
+    public static final String AUTONOMOUS_DRIVE_GAIN_FILE = "file:///auto_drive_gain.txt";
+    // We're going to divide the gyro angle by this gain
+    public static double AUTONOMOUS_DRIVE_GAIN = 10.0;
     public int ticks = 0;
     public static double interruptPri = 0.02;
 
