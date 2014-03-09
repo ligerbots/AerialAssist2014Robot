@@ -37,25 +37,7 @@ public class OvershootChange extends Command {
                 Robot.OVERSHOOT_ANGLE_NEGATIVE += m_value;
             }
 
-            try {
-                // Persist our overshoot numbers to a file
-                DataOutputStream file;
-                FileConnection fc;
-                fc = (FileConnection)Connector.open(Robot.OVERSHOOT_FILE, Connector.WRITE);
-                System.out.println("Saving " + Robot.OVERSHOOT_FILE);
-                fc.create();
-                file = fc.openDataOutputStream();
-                file.writeDouble(Robot.OVERSHOOT_ANGLE_POSITIVE);
-                System.out.println(Robot.OVERSHOOT_ANGLE_POSITIVE);
-                file.writeDouble(Robot.OVERSHOOT_ANGLE_NEGATIVE);
-                System.out.println(Robot.OVERSHOOT_ANGLE_NEGATIVE);
-                file.flush();
-                file.close();
-                fc.close();
-            }
-            catch (Exception ex) {
-                System.out.println("File output error: " + ex.getMessage());
-            }
+            Robot.robot.writeOvershoot();
         }
 
         // Called repeatedly when this Command is scheduled to run

@@ -1,0 +1,168 @@
+ant -f C:\\Users\\ligerbot\\Documents\\NetBeansProjects\\AerialAssist2014Robot deploy run
+clean:
+Deleting directory C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build
+Created dir: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build
+Created dir: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\classes
+[crio-compile] ./src, C:/Users/ligerbot/sunspotfrcsdk\lib\wpilibj.jar;C:/Users/ligerbot/sunspotfrcsdk\lib\networktables-crio.jar;C:/Users/ligerbot/sunspotfrcsdk\lib\wpilibj.project\dist\lib\wpilibj.jar, C:/Users/ligerbot/sunspotfrcsdk\lib\squawk.jar -> ./build/classes
+Compiling 22 source files to C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\classes
+compile:
+preverify:
+Created dir: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\preverify
+Created dir: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\preverify.raw.util
+[crio-preverify] ./build/classes, , C:/Users/ligerbot/sunspotfrcsdk\lib\wpilibj.jar;C:/Users/ligerbot/sunspotfrcsdk\lib\networktables-crio.jar;C:/Users/ligerbot/sunspotfrcsdk\lib\wpilibj.project\dist\lib\wpilibj.jar, C:/Users/ligerbot/sunspotfrcsdk\lib\squawk.jar -> ./build/preverify
+Expanding: C:\Users\ligerbot\sunspotfrcsdk\lib\wpilibj.jar into C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\preverify
+Expanding: C:\Users\ligerbot\sunspotfrcsdk\lib\networktables-crio.jar into C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\preverify
+Expanding: C:\Users\ligerbot\sunspotfrcsdk\lib\wpilibj.project\dist\lib\wpilibj.jar into C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\preverify
+jar:
+[crio-jar] ./build/preverify, ./resources -> ./build/app.jar
+Building jar: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\app.jar
+suite:
+Created dir: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\suite
+[crio-suite] ./build/app.jar -> ./build/suite/image
+CompilerOracle: exclude com/sun/squawk/Method.getParameterTypes
+CompilerOracle: exclude com/sun/squawk/SymbolParser.getSignatureTypeAt
+CompilerOracle: exclude com/sun/squawk/SymbolParser.stripMethods
+[translating suite image [closed: false, parent: squawk] ...]
+### Excluding compile: com.sun.squawk.Method::getParameterTypes
+### Excluding compile: com.sun.squawk.SymbolParser::getSignatureTypeAt
+[Including resource: META-INF/MANIFEST.MF]
+[Including resource: META-INF/maven/edu.wpi.first.wpilib.networktables.java/NetworkTablesAzalea/pom.properties]
+[Including resource: META-INF/maven/edu.wpi.first.wpilib.networktables.java/NetworkTablesAzalea/pom.xml]
+Romizer processed 410 classes and generated 4 files.
+Expanding: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\app.jar into C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\suite
+Moving 1 file to C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\suite
+Moving 1 file to C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\suite
+Moving 1 file to C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\build\suite
+Deleting: C:\Users\ligerbot\Documents\NetBeansProjects\AerialAssist2014Robot\image.suite.api
+deploy:
+[crio-configure] Configuration files not included in this version of the sdk
+[crio-configure] Checking that crio is configured for Java
+Host OS: Windows 8 6.2, 6.2
+Host JVM: Java HotSpot(TM) Client VM 24.45-b08
+Target IP: 10.28.77.2
+Network interfaces on host:
+    Ralink RT3290 802.11bgn Wi-Fi Adapter:  address: 10.28.77.9 netmask: 255.255.255.254
+WARNING: Host is not on same subnet as robot. May not be able to complete all communication with robot.
+Connecting FTP @10.28.77.2
+[crio-deploy] ./build/suite/image.suite -> 10.28.77.2
+Sending local file image.suite
+run:
+[cRIO] [OTA Server] ********* REBOOTING cRIO *********
+[cRIO] 
+   Waiting for cRIO to reboot (1s)
+   Waiting for cRIO to reboot (2s)
+   Waiting for cRIO to reboot (3s)
+   Waiting for cRIO to reboot (4s)
+   Waiting for cRIO to reboot (5s)
+   Waiting for cRIO to reboot (6s)
+   Waiting for cRIO to reboot (7s)
+   Waiting for cRIO to reboot (8s)
+   Waiting for cRIO to reboot (9s)
+   Waiting for cRIO to reboot (10s)
+   Waiting for cRIO to reboot (11s)
+[cRIO] 
+[cRIO] -> * Loading debug.o: debug
+[cRIO] Debugging is up, target server mounted at /tsfs
+[cRIO] 
+[cRIO] 
+[cRIO]                 VxWorks
+[cRIO] 
+[cRIO] Copyright 1984-2006  Wind River Systems, Inc.
+[cRIO] 
+[cRIO]              CPU: cRIO-FRC II
+[cRIO]     Runtime Name: VxWorks
+[cRIO]  Runtime Version: 6.3
+[cRIO]      BSP version: 1.0/0
+[cRIO]          Created: May 23 2013, 16:00:09
+[cRIO] ED&R Policy Mode: Deployed
+[cRIO]    WDB Comm Type: WDB_COMM_END
+[cRIO]              WDB: Ready.
+[cRIO] 
+[cRIO] * Loading nisysrpc.out: nisysrpc
+[cRIO] * Loading NiRioRpc.out: NiRioRpc
+[cRIO] * Loading nivissvc.out: nivissvc
+[cRIO] * Loading nivision.out: nivision
+[cRIO] task 0x18a00b8 (Service Locator Thread 5) deleted: errno=0 (0) status=0 (0)
+[cRIO] NI-RIO Server 13.0 started successfully.
+[cRIO] task 0x177f258 (NiRioRpc) deleted: errno=0 (0) status=0 (0)
+[cRIO] * Loading visa32.out: visa32
+[cRIO] * Loading niserial.out: niserial
+[cRIO] task 0x1a0a5a8 (VISA Jungo Init Thread) deleted: errno=196709 (0x30065) status=-1073807360 (0xbfff0000)
+[cRIO] * Loading NiFpgaLv.out: NiFpgaLv
+[cRIO] * Loading FRC_FPGA_ChipObject.out: FRC_FPGA_ChipObject
+[cRIO] task 0x2692360 (Service Locator Thread 6) deleted: errno=0 (0) status=0 (0)
+[cRIO] task 0x2692360 (Service Locator Thread 7) deleted: errno=0 (0) status=0 (0)
+[cRIO] task 0x2692360 (Service Locator Thread 8) deleted: errno=0 (0) status=0 (0)
+[cRIO] * Loading FRC_NetworkCommunication.out: FRC_NetworkCommunication
+[cRIO] FRC_NetworkCommunication version: p4-1.4.0a18
+[cRIO] task 0x161ff20 (nisysapi-mDns) deleted: errno=0 (0) status=0 (0)
+[cRIO] FPGA Hardware GUID: 0x1394F6DC1FEB42EC6910E5767ED1D22C
+[cRIO] FPGA Software GUID: 0x1394F6DC1FEB42EC6910E5767ED1D22C
+[cRIO] FPGA Hardware Version: 2012
+[cRIO] FPGA Software Version: 2012
+[cRIO] FPGA Hardware Revision: 1.6.4
+[cRIO] FPGA Software Revision: 1.6.4
+[cRIO] * Loading FRC_BlackJagBridgePlugin.out: FRC_BlackJagBridgePlugin
+[cRIO] FRC_BlackJagBridgePlugin was compiled from SVN revision 72
+[cRIO] 
+[cRIO] 
+[cRIO] [OTA Server] Version: 2012 FRC, Jan  5 2012, 17:20:48
+[cRIO] 
+[cRIO] 
+[cRIO] Welcome to LabVIEW Real-Time 13.0
+[cRIO] task 0x17748b8 (sysapi-rpc) deleted: errno=0 (0) status=0 (0)
+[cRIO] 
+[cRIO] [Squawk VM] Version: 2011 FRC, Nov  5 2011, 14:34:13
+[cRIO] FPGA Hardware GUID: 0x1394f6dc1feb42ec6910e5767ed1d22c
+[cRIO] FPGA Software GUID: 0xa14c11bde4bb64aef6a86fc52a294cd9
+[cRIO] edu.wpi.first.wpilibj.networktables2.server.ServerConnectionAdapter@8 entered connection state: GOT_CONNECTION_FROM_CLIENT
+[cRIO] edu.wpi.first.wpilibj.networktables2.server.ServerConnectionAdapter@a entered connection state: GOT_CONNECTION_FROM_CLIENT
+[cRIO] CAN init 2 driveTrainLeftFrontJagedu.wpi.first.wpilibj.networktables2.server.ServerConnectionAdapter@8 entered connection state: CONNECTED_TO_CLIENT
+[cRIO] edu.wpi.first.wpilibj.networktables2.server.ServerConnectionAdapter@a entered connection state: CONNECTED_TO_CLIENT
+[cRIO]  OK
+[cRIO] CAN init 3 driveTrainLeftRearJagOK
+[cRIO] CAN init 6 driveTrainRightRearJag OK
+[cRIO] CAN init 4 pickupRollerJag OK
+[cRIO] Compressor Started
+[cRIO] Drive constructor called
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] Turn started for -90.0 degrees.
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] teleopInit
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] Gyro angle:-8.476191256175085
+[cRIO] Gyro angle:40.420832063804404
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive
+[cRIO] Turn started for -90.0 degrees.
+[cRIO] Gyro angle:-19.644918007209032
+[cRIO] Initialize Drive
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] Gyro angle:-7.335445117962
+[cRIO] Gyro angle:35.680849187908684
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] Gyro angle:-6.610888078395716
+[cRIO] Gyro angle:40.8275419094252
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive
+[cRIO] Saving file:///overshoot_angle.txt
+[cRIO] 14.0
+[cRIO] Saving file:///overshoot_angle.txt
+[cRIO] 13.0
+[cRIO] Turn started for -90.0 degrees.
+[cRIO] Gyro angle:-19.52421076717269
+[cRIO] Gyro angle:-72.76686578265046
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive
+[cRIO] Turn started for 90.0 degrees.
+[cRIO] Gyro angle:4.5411608891188004
+[cRIO] Gyro angle:54.60165204554212
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive
+[cRIO] Turn started for -90.0 degrees.
+[cRIO] Gyro angle:-17.370353425475543
+[cRIO] Gyro angle:-73.17138043283367
+[cRIO] Turn90 Finished
+[cRIO] Initialize Drive

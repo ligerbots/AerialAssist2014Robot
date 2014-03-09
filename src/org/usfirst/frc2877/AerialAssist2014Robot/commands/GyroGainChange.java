@@ -22,6 +22,7 @@ public class GyroGainChange extends Command {
         protected void initialize() {
             Robot.AUTONOMOUS_DRIVE_GAIN += m_amount; 
             System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_GAIN);
+            Robot.robot.writeOvershoot();
         }
 
         // Called repeatedly when this Command is scheduled to run
