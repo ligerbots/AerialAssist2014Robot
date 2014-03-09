@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import javax.microedition.io.Connector;
 import org.usfirst.frc2877.AerialAssist2014Robot.commands.*;
 import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.*;
@@ -61,13 +62,11 @@ public class Robot extends IterativeRobot {
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
     public static double currentPressure;
-    public static final String OVERSHOOT_FILE = "file:///overshoot_angle2.txt";
+    public static final String OVERSHOOT_FILE = "file:///2014adjustments.bin";
     public static double OVERSHOOT_ANGLE_NEGATIVE = 12.0;
     public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
-    // Gain factor to use gyro to keep the robot straight
-    public static final String AUTONOMOUS_DRIVE_GAIN_FILE = "file:///auto_drive_gain.txt";
     // We're going to divide the gyro angle by this gain
-    public static double AUTONOMOUS_DRIVE_GAIN = 10.0;
+    public static double AUTONOMOUS_DRIVE_GAIN = 5.0;
     public int ticks = 0;
     public static double interruptPri = 0.02;
 
@@ -193,7 +192,9 @@ public class Robot extends IterativeRobot {
                 System.out.print("Loading " + OVERSHOOT_FILE + ", +angle: ");
                 OVERSHOOT_ANGLE_POSITIVE = file.readDouble(); //override the default + angle with this angle
                 OVERSHOOT_ANGLE_NEGATIVE = file.readDouble(); //override the default - angle with this angle
+                AUTONOMOUS_DRIVE_GAIN = file.readDouble();    // override the gyro Drive gain
                 System.out.println(OVERSHOOT_ANGLE_POSITIVE + " -angle: " + OVERSHOOT_ANGLE_NEGATIVE);
+                System.out.println("AUTONOMOUS_DRIVE_GAIN: " + AUTONOMOUS_DRIVE_GAIN);
                 file.close();
                 fc.close();
             }
@@ -205,6 +206,31 @@ public class Robot extends IterativeRobot {
 
 
         return true;
+    }
+    
+    public void writeOvershoot() {
+            
+        try {
+            // Persist our overshoot numbers to a file
+            DataOutputStream file;
+            FileConnection fc;
+            fc = (FileConnection)Connector.open(Robot.OVERSHOOT_FILE, Connector.WRITE);
+            System.out.println("Saving " + Robot.OVERSHOOT_FILE);
+            fc.create();
+            file = fc.openDataOutputStream();
+            file.writeDouble(Robot.OVERSHOOT_ANGLE_POSITIVE);
+            System.out.println(Robot.OVERSHOOT_ANGLE_POSITIVE);
+            file.writeDouble(Robot.OVERSHOOT_ANGLE_NEGATIVE);
+            System.out.println(Robot.OVERSHOOT_ANGLE_NEGATIVE);
+            file.writeDouble(Robot.AUTONOMOUS_DRIVE_GAIN);
+            System.out.println(Robot.AUTONOMOUS_DRIVE_GAIN);
+            file.flush();
+            file.close();
+            fc.close();
+        }
+        catch (Exception ex) {
+            System.out.println("File output error: " + ex.getMessage());
+        }
     }
     
     public void updateDashboard()

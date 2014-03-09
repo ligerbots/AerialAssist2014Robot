@@ -14,8 +14,8 @@ import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
  */
 public class AutonomousDrive extends Command {
 
-    int time = 0;
-    boolean done = false;
+    int m_time = 0;
+    boolean m_done = false;
     int m_finish;
     double m_gyro;
 
@@ -26,24 +26,33 @@ public class AutonomousDrive extends Command {
         m_finish = finish;
     }
 
-    // Called just before this Command runs the first time
+    // Called just before this Command runs the first m_time
     protected void initialize() {
         System.out.println("Initialize Drive");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        time++;
+        m_time++;
         m_gyro = Robot.driveTrain.getCurrentAngle();
-        Robot.driveTrain.drive(m_gyro/Robot.AUTONOMOUS_DRIVE_GAIN, -0.7);
-        if (time > m_finish) {
-            done = true;
+        Robot.driveTrain.drive((-m_gyro*Robot.AUTONOMOUS_DRIVE_GAIN)/100.0, -0.7);
+        if (m_time > m_finish) {
+            m_done = true;
+        }
+        if (m_gyro > 7.5 || m_gyro < -7.5)
+        {
+            m_done = true;
+            System.out.println("Gyro angle: " + m_gyro + " ***** STOP DUE LIMIT EXCEEDED ***");
+        }
+        if (m_time % 5 == 0)
+        {
+            System.out.println("Gyro angle: " + m_gyro);
         }
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return done;
+        return m_done;
     }
 
     // Called once after isFinished returns true
