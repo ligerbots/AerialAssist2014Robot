@@ -7,6 +7,7 @@ package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
+import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 
 /**
  *
@@ -29,6 +30,7 @@ public class AutonomousDrive extends Command {
     // Called just before this Command runs the first m_time
     protected void initialize() {
         System.out.println("Initialize Drive");
+        RobotMap.driveTrainGyro.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
