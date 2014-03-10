@@ -67,6 +67,7 @@ public class Robot extends IterativeRobot {
     public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
     // We're going to divide the gyro angle by this gain
     public static double AUTONOMOUS_DRIVE_GAIN = 5.0;
+    public static int AUTONOMOUS_DRIVE_TICKS = 30;
     public int ticks = 0;
     public static double interruptPri = 0.02;
     // This is tricky. We have a static to hold a pointer to the presumed
@@ -194,9 +195,10 @@ public class Robot extends IterativeRobot {
             if (fc.exists()) {
                 file = fc.openDataInputStream();
                 System.out.print("Loading " + OVERSHOOT_FILE + ", +angle: ");
-                OVERSHOOT_ANGLE_POSITIVE = file.readDouble(); //override the default + angle with this angle
-                OVERSHOOT_ANGLE_NEGATIVE = file.readDouble(); //override the default - angle with this angle
+                OVERSHOOT_ANGLE_POSITIVE = file.readDouble(); // override the default + angle with this angle
+                OVERSHOOT_ANGLE_NEGATIVE = file.readDouble(); // override the default - angle with this angle
                 AUTONOMOUS_DRIVE_GAIN = file.readDouble();    // override the gyro Drive gain
+                AUTONOMOUS_DRIVE_TICKS = file.readInt();      // override the autonomous drive tick time
                 System.out.println(OVERSHOOT_ANGLE_POSITIVE + " -angle: " + OVERSHOOT_ANGLE_NEGATIVE);
                 System.out.println("AUTONOMOUS_DRIVE_GAIN: " + AUTONOMOUS_DRIVE_GAIN);
                 file.close();
@@ -223,11 +225,13 @@ public class Robot extends IterativeRobot {
             fc.create();
             file = fc.openDataOutputStream();
             file.writeDouble(Robot.OVERSHOOT_ANGLE_POSITIVE);
-            System.out.println(Robot.OVERSHOOT_ANGLE_POSITIVE);
+            System.out.println("OVERSHOOT_ANGLE_POSITIVE: " + Robot.OVERSHOOT_ANGLE_POSITIVE);
             file.writeDouble(Robot.OVERSHOOT_ANGLE_NEGATIVE);
-            System.out.println(Robot.OVERSHOOT_ANGLE_NEGATIVE);
+            System.out.println("OVERSHOOT_ANGLE_NEGATIVE: " + Robot.OVERSHOOT_ANGLE_NEGATIVE);
             file.writeDouble(Robot.AUTONOMOUS_DRIVE_GAIN);
-            System.out.println(Robot.AUTONOMOUS_DRIVE_GAIN);
+            System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_GAIN);
+            file.writeInt(Robot.AUTONOMOUS_DRIVE_TICKS);
+            System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_TICKS);
             file.flush();
             file.close();
             fc.close();
@@ -245,6 +249,8 @@ public class Robot extends IterativeRobot {
             SmartDashboard.putNumber("Gyro Angle", driveTrain.getCurrentAngle());
             SmartDashboard.putNumber("OVERSHOOT_ANGLE_POSITIVE", OVERSHOOT_ANGLE_POSITIVE);
             SmartDashboard.putNumber("OVERSHOOT_ANGLE_NEGATIVE", OVERSHOOT_ANGLE_NEGATIVE);
+            SmartDashboard.putNumber("AUTONOMOUS_DRIVE_GAIN", AUTONOMOUS_DRIVE_GAIN);
+            SmartDashboard.putNumber("AUTONOMOUS_DRIVE_TICKS", AUTONOMOUS_DRIVE_TICKS);
         }
 
     }
