@@ -62,12 +62,14 @@ public class Robot extends IterativeRobot {
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
     public static double currentPressure;
+    
+    // This is the section for adjustable, persisted parameters
     public static final String OVERSHOOT_FILE = "file:///2014adjustments.bin";
     public static double OVERSHOOT_ANGLE_NEGATIVE = 12.0;
     public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
-    // We're going to divide the gyro angle by this gain
     public static double AUTONOMOUS_DRIVE_GAIN = 5.0;
     public static int AUTONOMOUS_DRIVE_TICKS = 30;
+    
     public int ticks = 0;
     public static double interruptPri = 0.02;
     // This is tricky. We have a static to hold a pointer to the presumed
