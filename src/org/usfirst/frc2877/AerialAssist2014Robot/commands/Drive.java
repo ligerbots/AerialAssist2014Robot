@@ -34,7 +34,11 @@ public class  Drive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        double x = Robot.oi.joystick.getX(GenericHID.Hand.kRight);
+        // On an XBox controller, RawAxis4 is the X axis of the right stick
+        // We will use this for the left/right control only
+        double x = Robot.oi.joystick.getRawAxis(4);
+        // On an XBox controller, getY returns the Y value of the left stick
+        // We will use this for the forward/back control only
         double y = Robot.oi.joystick.getY();
         Robot.driveTrain.drive(x,y);
     }
