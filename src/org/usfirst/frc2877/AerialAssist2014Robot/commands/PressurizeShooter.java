@@ -28,6 +28,7 @@ public class PressurizeShooter extends Command {
     protected void initialize() {
         Robot.shooterIsPressurized = false;
         theTimer  = 0;
+        maxTime = 30;
         shootSubsys.shootExtend();
     }
 

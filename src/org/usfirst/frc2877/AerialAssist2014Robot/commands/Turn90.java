@@ -21,9 +21,9 @@ public class Turn90 extends Command {
     int m_leftTime = 0; //150 = 50 (ticks/second) * 3 (seconds)
     double m_targetAngle = 90, m_gyro_start; //gets overridden
     static double coarseTurn = 75.0;
-    static double lowSpeed = 0.75;
+    static double lowSpeed = 0.8;
     static double fullSpeed = 1.0;
-    static int maxTime = 60;
+    static int maxTime = 50;
 
     public Turn90(double angle) {
         // Use requires() here to declare subsystem dependencies

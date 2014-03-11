@@ -65,10 +65,10 @@ public class Robot extends IterativeRobot {
     
     // This is the section for adjustable, persisted parameters
     public static final String OVERSHOOT_FILE = "file:///2014adjustments.bin";
-    public static double OVERSHOOT_ANGLE_NEGATIVE = 12.0;
-    public static double OVERSHOOT_ANGLE_POSITIVE = 15.0;
-    public static double AUTONOMOUS_DRIVE_GAIN = 5.0;
-    public static int AUTONOMOUS_DRIVE_TICKS = 30;
+    public static double OVERSHOOT_ANGLE_NEGATIVE = 8.0;
+    public static double OVERSHOOT_ANGLE_POSITIVE = 8.0;
+    public static double AUTONOMOUS_DRIVE_GAIN = 1.0;
+    public static int AUTONOMOUS_DRIVE_TICKS = 50;
     
     public int ticks = 0;
     public static double interruptPri = 0.02;
