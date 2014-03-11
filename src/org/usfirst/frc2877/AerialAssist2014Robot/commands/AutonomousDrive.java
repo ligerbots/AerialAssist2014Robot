@@ -18,35 +18,34 @@ public class AutonomousDrive extends Command {
     int m_time = 0;
     boolean m_done = false;
     int m_finish;
-    double m_gyro;
+    double m_gyro, m_gyro_start;
 
     public AutonomousDrive(int finish) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.driveTrain);
+        setInterruptible(false);
         m_finish = finish;
+         
     }
 
     // Called just before this Command runs the first m_time
     protected void initialize() {
         System.out.println("Initialize Drive");
-        RobotMap.driveTrainGyro.reset();
+        m_gyro_start = Robot.driveTrain.getCurrentAngle();
+        m_done = false;
+        m_time = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         m_time++;
-        m_gyro = Robot.driveTrain.getCurrentAngle();
-        Robot.driveTrain.drive((-m_gyro*Robot.AUTONOMOUS_DRIVE_GAIN)/100.0, -0.7);
+        m_gyro = Robot.driveTrain.getCurrentAngle() - m_gyro_start;
+        Robot.driveTrain.drive((-m_gyro*Robot.AUTONOMOUS_DRIVE_GAIN)/100.0, 0.7);
         if (m_time > m_finish) {
             m_done = true;
         }
-        if (m_gyro > 7.5 || m_gyro < -7.5)
-        {
-            m_done = true;
-            System.out.println("Gyro angle: " + m_gyro + " ***** STOP DUE LIMIT EXCEEDED ***");
-        }
-        if (m_time % 5 == 0)
+        if (m_time % 3 == 0)
         {
             System.out.println("Gyro angle: " + m_gyro);
         }

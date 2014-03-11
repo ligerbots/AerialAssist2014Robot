@@ -88,14 +88,14 @@ public class OI {
         //turn90LeftButton = new JoystickButton(joystick, 13);
         //turn90LeftButton.whenPressed(new Turn90Left());
         joystick2 = new Joystick(2);
-        JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 10);
-        JoystickButton overShootUpPositiveMinus = new JoystickButton(joystick2, 12);
-        JoystickButton overShootUpNegativePlus = new JoystickButton(joystick2, 9);
-        JoystickButton overShootUpNegativeMinus = new JoystickButton(joystick2, 11);
-        JoystickButton gyroGainPlus = new JoystickButton(joystick2, 8);
-        JoystickButton gyroGainMinus = new JoystickButton(joystick2, 7);
-        JoystickButton autoDriveTicksPlus = new JoystickButton(joystick2, 5);
-        JoystickButton autoDriveTicksMinus = new JoystickButton(joystick2, 3);
+        JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 11);
+        JoystickButton overShootUpPositiveMinus = new JoystickButton(joystick2, 10);
+        JoystickButton overShootUpNegativePlus = new JoystickButton(joystick2, 6);
+        JoystickButton overShootUpNegativeMinus = new JoystickButton(joystick2, 7);
+        JoystickButton gyroGainPlus = new JoystickButton(joystick2, 9);
+        JoystickButton gyroGainMinus = new JoystickButton(joystick2, 8);
+        JoystickButton autoDriveTicksPlus = new JoystickButton(joystick2, 3);
+        JoystickButton autoDriveTicksMinus = new JoystickButton(joystick2, 2);
         
         
         overShootUpPostivePlus.whenPressed(new OvershootChange(1, 1.0,1.0));

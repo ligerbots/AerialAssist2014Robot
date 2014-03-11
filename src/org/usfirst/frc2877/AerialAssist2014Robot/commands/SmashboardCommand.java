@@ -28,7 +28,6 @@ public class SmashboardCommand extends Command {
     protected void execute() {
         double pressure = Robot.getPressure() ;
         SmartDashboard.putNumber("PSIMonit", pressure);
-        SmartDashboard.putNumber("PSIMonitNum", pressure);
         SmartDashboard.putBoolean("CanShoot", (Robot.pickupIsOpen 
                 && Robot.secondaryIsOpen 
                 && Robot.shooterIsPressurized));

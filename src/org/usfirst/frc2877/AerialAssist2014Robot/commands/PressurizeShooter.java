@@ -22,6 +22,7 @@ public class PressurizeShooter extends Command {
     
     public PressurizeShooter() {
         requires(Robot.shooter);
+        setInterruptible(false);
     }
     
     protected void initialize() {

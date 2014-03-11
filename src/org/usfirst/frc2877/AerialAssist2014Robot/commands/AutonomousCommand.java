@@ -21,10 +21,11 @@ public class AutonomousCommand extends CommandGroup {
     public AutonomousCommand() {
         addParallel(new PressurizeShooter());
         addSequential(new AutonomousDrive(Robot.AUTONOMOUS_DRIVE_TICKS));
-        addSequential(new Turn90(90.0));
+        addSequential(new Delay(0.5));
+        addSequential(new Turn90(-90.0));
         addParallel(new TogglePickupArm());
         addParallel(new ToggleSecondaryArm());
-        addSequential(new Delay(1.0));
+        addSequential(new Delay(2.0));
         addSequential(new Shoot());
     }
 }

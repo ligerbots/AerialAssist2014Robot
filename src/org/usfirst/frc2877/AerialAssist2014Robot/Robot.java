@@ -140,6 +140,10 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
         // schedule the autonomous command (example)
         if (autonomousCommand != null) {
+            // Issue arm closing commands regardless of initial state
+            // so our code KNOWS it's closed.
+            pickup.closePickup();
+            secondary.closeSecondary();
             autonomousCommand.start();
         }
     }
