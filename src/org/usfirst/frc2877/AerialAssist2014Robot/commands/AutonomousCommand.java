@@ -20,9 +20,10 @@ public class AutonomousCommand extends CommandGroup {
 
     public AutonomousCommand() {
         addParallel(new PressurizeShooter());
-        addSequential(new AutonomousDrive(Robot.AUTONOMOUS_DRIVE_TICKS));
         double drift = Robot.driveTrain.getCurrentAngle();
+        addSequential(new AutonomousDrive(Robot.AUTONOMOUS_DRIVE_TICKS));
         addSequential(new Delay(0.5));
+        drift = drift - Robot.driveTrain.getCurrentAngle();
         addSequential(new Turn90(-90.0+drift));
         addParallel(new TogglePickupArm());
         addParallel(new ToggleSecondaryArm());
