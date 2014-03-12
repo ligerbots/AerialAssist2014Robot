@@ -70,6 +70,12 @@ public class Robot extends IterativeRobot {
     public static double AUTONOMOUS_DRIVE_GAIN = 1.0;
     public static int AUTONOMOUS_DRIVE_TICKS = 50;
     
+    // Need this to be able to provide the starting gyro angle to the
+    // autonomous command. Note that it should be zero at startup, but in
+    // case we go back and forth between Autonomous and Teleop for practice,
+    // we need to check it each time.
+    public static double GYRO_START_ANGLE = 0.0;
+    
     public int ticks = 0;
     public static double interruptPri = 0.02;
     // This is tricky. We have a static to hold a pointer to the presumed
@@ -144,6 +150,9 @@ public class Robot extends IterativeRobot {
             // so our code KNOWS it's closed.
             pickup.closePickup();
             secondary.closeSecondary();
+            // Read the current gyro angle and save it in the static variable
+            // so it can be used by the autonomousCommand
+            GYRO_START_ANGLE = driveTrain.getCurrentAngle();
             autonomousCommand.start();
         }
     }
