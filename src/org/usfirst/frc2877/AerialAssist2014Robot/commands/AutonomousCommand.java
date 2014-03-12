@@ -19,15 +19,22 @@ import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 public class AutonomousCommand extends CommandGroup {
 
     public AutonomousCommand() {
+        // We only have 10 seconds and we want to make sure the shooter is pressurized
         addParallel(new PressurizeShooter());
-        double drift = Robot.driveTrain.getCurrentAngle();
+        // Drive straight
         addSequential(new AutonomousDrive(Robot.AUTONOMOUS_DRIVE_TICKS));
+        // Wait for the motors to stop before attempting the turn
         addSequential(new Delay(0.5));
-        drift = drift - Robot.driveTrain.getCurrentAngle();
-        addSequential(new Turn90(-90.0+drift));
+        // In case the robot turns while driving or while stopping,
+        // recompute how far we need to turn to get to -90 degrees from the
+        // start angle that was read just before this command group executes.
+        addSequential(new Turn90(-90.0 - Robot.GYRO_START_ANGLE));
+        // Open up the pickup and secondary arms in preparation for shooting
         addParallel(new TogglePickupArm());
         addParallel(new ToggleSecondaryArm());
+        // Wait until both arms are extended
         addSequential(new Delay(2.0));
+        // By now, all conditions should be met for shooting, so shoot
         addSequential(new Shoot());
     }
 }
