@@ -1,0 +1,142 @@
+<xml version="1.0">
+<dashboard>
+	<widget field="Catch" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="896" y="640"/>
+		<width>80</width>
+		<height>32</height>
+	</widget>
+	<widget field="Pickup" type="String" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="800" y="640"/>
+		<width>80</width>
+		<height>32</height>
+	</widget>
+	<widget field="Stick Control Single" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="768" y="432"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="AUTONOMOUS_DRIVE_TICKS" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="752" y="512"/>
+		<width>192</width>
+		<height>32</height>
+	</widget>
+	<widget field="AUTONOMOUS_DRIVE_GAIN" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="752" y="480"/>
+		<width>192</width>
+		<height>32</height>
+	</widget>
+	<widget field="OVERSHOOT_ANGLE_NEGATIVE" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="736" y="384"/>
+		<width>208</width>
+		<height>32</height>
+	</widget>
+	<widget field="OVERSHOOT_ANGLE_POSITIVE" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="736" y="352"/>
+		<width>208</width>
+		<height>32</height>
+	</widget>
+	<widget field="Gyro Angle" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.Compass">
+		<location x="-16" y="16"/>
+		<height>160</height>
+	</widget>
+	<widget field="6" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="832" y="240"/>
+		<width>32</width>
+	</widget>
+	<widget field="5" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="896" y="128"/>
+		<width>32</width>
+	</widget>
+	<widget field="4" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="896" y="16"/>
+		<width>32</width>
+	</widget>
+	<widget field="3" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="720" y="128"/>
+		<width>32</width>
+		<height>16</height>
+	</widget>
+	<widget field="2" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="720" y="16"/>
+		<width>32</width>
+		<height>16</height>
+	</widget>
+	<widget field="CanShoot" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="240" y="64"/>
+		<width>208</width>
+		<height>80</height>
+	</widget>
+	<widget field="A:driveTrainRightFrontJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="848" y="64"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="V:pickupRollerJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="768" y="256"/>
+		<width>128</width>
+		<height>32</height>
+	</widget>
+	<widget field="V:driveTrainRightFrontJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="848" y="32"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="ArcadeDriveX" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="832" y="560"/>
+		<width>112</width>
+		<height>32</height>
+	</widget>
+	<widget field="V:driveTrainLeftRearJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="672" y="144"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="ArcadeDriveY" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="832" y="592"/>
+		<width>112</width>
+		<height>32</height>
+	</widget>
+	<widget field="V:driveTrainRightRearJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="848" y="144"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="A:driveTrainRightRearJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="848" y="176"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="A:pickupRollerJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="768" y="288"/>
+		<width>128</width>
+		<height>32</height>
+	</widget>
+	<widget field="V:driveTrainLeftFrontJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="672" y="32"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="A:driveTrainLeftRearJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="672" y="176"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<widget field="A:driveTrainLeftFrontJag" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="672" y="64"/>
+		<width>160</width>
+		<height>32</height>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.camera.WPICameraExtension">
+		<location x="80" y="224"/>
+		<width>560</width>
+		<height>416</height>
+	</static-widget>
+	<widget field="PSIMonit" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.SimpleDial">
+		<location x="448" y="16"/>
+		<height>166</height>
+		<property name="Upper Limit" value="130.0"/>
+	</widget>
+</dashboard>
+<live-window>
+</live-window>
+</xml>

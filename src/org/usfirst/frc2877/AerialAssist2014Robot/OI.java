@@ -96,6 +96,7 @@ public class OI {
         JoystickButton gyroGainMinus = new JoystickButton(joystick2, 8);
         JoystickButton autoDriveTicksPlus = new JoystickButton(joystick2, 3);
         JoystickButton autoDriveTicksMinus = new JoystickButton(joystick2, 2);
+        JoystickButton stickControlToggle = new JoystickButton(joystick2, 1);
         
         
         overShootUpPostivePlus.whenPressed(new OvershootChange(1, 1.0,1.0));
@@ -106,6 +107,7 @@ public class OI {
         gyroGainMinus.whenPressed(new GyroGainChange(-0.5));
         autoDriveTicksPlus.whenPressed(new AutoDriveTickChange(1));
         autoDriveTicksMinus.whenPressed(new AutoDriveTickChange(-1));
+        stickControlToggle.whenPressed(new StickControlToggle());
   
         // SmartDashboard Buttons
 //        SmartDashboard.putData("Autonomous Command", new AutonomousCommand());

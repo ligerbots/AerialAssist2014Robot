@@ -33,10 +33,20 @@ public class  Drive extends Command {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
         // On an XBox controller, RawAxis4 is the X axis of the right stick
         // We will use this for the left/right control only
-        double x = Robot.oi.joystick.getRawAxis(4);
+        double x;
+                
+        if (!Robot.StickControlSingle)
+        {
+            x = Robot.oi.joystick.getRawAxis(4);
+        }
+        else
+        {
+            x = Robot.oi.joystick.getX();
+        }
         // On an XBox controller, getY returns the Y value of the left stick
         // We will use this for the forward/back control only
         double y = Robot.oi.joystick.getY();

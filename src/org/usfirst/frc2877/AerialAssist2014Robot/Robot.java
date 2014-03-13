@@ -69,6 +69,7 @@ public class Robot extends IterativeRobot {
     public static double OVERSHOOT_ANGLE_POSITIVE = 8.0;
     public static double AUTONOMOUS_DRIVE_GAIN = 1.0;
     public static int AUTONOMOUS_DRIVE_TICKS = 50;
+    public static boolean StickControlSingle = true;
     
     // Need this to be able to provide the starting gyro angle to the
     // autonomous command. Note that it should be zero at startup, but in
@@ -164,7 +165,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         updateDashboard();
         // if the compressor is running, add air
-        if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
+        if (!RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
             Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
         }
     }
@@ -190,7 +191,7 @@ public class Robot extends IterativeRobot {
         Scheduler.getInstance().run();
         updateDashboard();
         // if the compressor is running, add air
-        if (RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
+        if (!RobotMap.pneumaticPusherPushCompressor.getPressureSwitchValue()) {
             Robot.currentMoles += Robot.molesOfAir(Robot.compressorVolumeSinceLastTick());
         }
     }
@@ -215,8 +216,10 @@ public class Robot extends IterativeRobot {
                 OVERSHOOT_ANGLE_NEGATIVE = file.readDouble(); // override the default - angle with this angle
                 AUTONOMOUS_DRIVE_GAIN = file.readDouble();    // override the gyro Drive gain
                 AUTONOMOUS_DRIVE_TICKS = file.readInt();      // override the autonomous drive tick time
+                StickControlSingle = file.readBoolean();      // override the joystick drive control
                 System.out.println(OVERSHOOT_ANGLE_POSITIVE + " -angle: " + OVERSHOOT_ANGLE_NEGATIVE);
                 System.out.println("AUTONOMOUS_DRIVE_GAIN: " + AUTONOMOUS_DRIVE_GAIN);
+                System.out.println("Stick_Control: " + StickControlSingle);
                 file.close();
                 fc.close();
             }
@@ -248,6 +251,9 @@ public class Robot extends IterativeRobot {
             System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_GAIN);
             file.writeInt(Robot.AUTONOMOUS_DRIVE_TICKS);
             System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_TICKS);
+            file.writeBoolean(Robot.StickControlSingle);
+            System.out.println("Stick_Control: " + Robot.StickControlSingle);
+            
             file.flush();
             file.close();
             fc.close();
@@ -267,6 +273,7 @@ public class Robot extends IterativeRobot {
             SmartDashboard.putNumber("OVERSHOOT_ANGLE_NEGATIVE", OVERSHOOT_ANGLE_NEGATIVE);
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_GAIN", AUTONOMOUS_DRIVE_GAIN);
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_TICKS", AUTONOMOUS_DRIVE_TICKS);
+            SmartDashboard.putBoolean("Stick Control Single", Robot.StickControlSingle);
         }
 
     }

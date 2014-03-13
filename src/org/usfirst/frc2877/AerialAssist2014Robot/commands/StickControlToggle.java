@@ -4,30 +4,31 @@
  */
 package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 
 /**
  *
  * @author Administrator
  */
-public class AutoDriveTickChange extends Command {
-        private int m_ticks;
+public class StickControlToggle extends Command 
+{
 
-        public AutoDriveTickChange(int ticks) 
+        public StickControlToggle() 
         {
-            // we're ignoring direction for now
-            m_ticks = ticks;  // 0.5 or -0.5
-         }
+        }
         
-        protected void initialize() {
-            Robot.AUTONOMOUS_DRIVE_TICKS += m_ticks;
-            System.out.println("AUTONOMOUS_DRIVE_TICKS: " + Robot.AUTONOMOUS_DRIVE_TICKS);
+        protected void initialize() 
+        {
+            Robot.StickControlSingle = !Robot.StickControlSingle;
             Robot.robot.writeOvershoot();
+            SmartDashboard.putBoolean("Stick Control Single", Robot.StickControlSingle);
         }
 
         // Called repeatedly when this Command is scheduled to run
-        protected void execute() {
-           
+        protected void execute() 
+        {
+
         }
 
         // Make this return true when this Command no longer needs to run execute()
