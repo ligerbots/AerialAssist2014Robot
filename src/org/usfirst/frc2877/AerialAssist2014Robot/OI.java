@@ -73,20 +73,20 @@ public class OI {
         togglePickupButton.whenPressed(togglePickup);
         toggleSecondaryButton = new JoystickButton(joystick, 5);
         toggleSecondaryButton.whenPressed(toggleSecondary);
+/*
+        We don't need the turn buttons for the
+        
         turnRightButton = new JoystickButton(joystick, 3);    // XBox "B" button
         turnRightButton.whenPressed(TurnRight);
         turnLeftButton = new JoystickButton(joystick, 2);    // XBox "X" button
         turnLeftButton.whenPressed(TurnLeft);
+        */
         
         shootButton = new JoystickButton(joystick, 1);
         shootButton.whenPressed(new Shoot());
         shootPressureButton = new JoystickButton(joystick, 8);
         shootPressureButton.whenPressed(new PressurizeShooter());
-        
-        //turn90RightButton = new JoystickButton(joystick, 14);
-        //turn90RightButton.whenPressed(new Turn90Right());
-        //turn90LeftButton = new JoystickButton(joystick, 13);
-        //turn90LeftButton.whenPressed(new Turn90Left());
+
         joystick2 = new Joystick(2);
         JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 11);
         JoystickButton overShootUpPositiveMinus = new JoystickButton(joystick2, 10);
