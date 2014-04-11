@@ -35,6 +35,8 @@ public class AutonomousDrive extends Command {
         m_gyro_start = Robot.driveTrain.getCurrentAngle();
         m_done = false;
         m_time = 0;
+        Delay A; 
+        A = new Delay(0.5);
     }
 
     // Called repeatedly when this Command is scheduled to run

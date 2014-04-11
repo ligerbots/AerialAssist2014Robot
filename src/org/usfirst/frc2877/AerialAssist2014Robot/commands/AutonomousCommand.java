@@ -28,13 +28,18 @@ public class AutonomousCommand extends CommandGroup {
         // In case the robot turns while driving or while stopping,
         // recompute how far we need to turn to get to -90 degrees from the
         // start angle that was read just before this command group executes.
+        System.out.println("About to Turn 90");
         addSequential(new Turn90(-90.0 - Robot.GYRO_START_ANGLE));
         // Open up the pickup and secondary arms in preparation for shooting
+        System.out.println("About to Open Primary");
         addParallel(new TogglePickupArm());
+        System.out.println("About to Open Secondary");
         addParallel(new ToggleSecondaryArm());
         // Wait until both arms are extended
         addSequential(new Delay(2.0));
         // By now, all conditions should be met for shooting, so shoot
+        System.out.println("About to shoot in Autonomous");
         addSequential(new Shoot());
+        System.out.println("Autonomous Done");
     }
 }

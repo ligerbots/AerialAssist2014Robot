@@ -18,7 +18,7 @@ public class PressurizeShooter extends Command {
 
     ShooterSubsys shootSubsys = Robot.shooter;
     int theTimer;
-    static int maxTime = 30;
+    static int maxTime = 20;
     
     public PressurizeShooter() {
         requires(Robot.shooter);
@@ -28,7 +28,7 @@ public class PressurizeShooter extends Command {
     protected void initialize() {
         Robot.shooterIsPressurized = false;
         theTimer  = 0;
-        maxTime = 30;
+        maxTime = 20;
         shootSubsys.shootExtend();
     }
 
