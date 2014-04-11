@@ -9,6 +9,7 @@
 // it from being updated in th future.
 package org.usfirst.frc2877.AerialAssist2014Robot;
 
+
 import com.sun.squawk.microedition.io.FileConnection;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -20,6 +21,7 @@ import java.io.DataOutputStream;
 import javax.microedition.io.Connector;
 import org.usfirst.frc2877.AerialAssist2014Robot.commands.*;
 import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.*;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -57,7 +59,7 @@ public class Robot extends IterativeRobot {
     public static final double PICKUP_VOLUME = 3.53;
     public static final int NUMBER_TANKS = 11;
     public static final int TANK_VOLUME = 44;
-    public static final int PRESSURE_MAX = 115;
+    public static final int PRESSURE_MAX = 120;
     public static final int MAX_VOLUME = NUMBER_TANKS * TANK_VOLUME;
     public static final double MAX_MOLES = molesOfAir(MAX_VOLUME);
     public static double currentMoles;
@@ -149,6 +151,7 @@ public class Robot extends IterativeRobot {
         if (autonomousCommand != null) {
             // Issue arm closing commands regardless of initial state
             // so our code KNOWS it's closed.
+            RobotMap.pneumaticPusherPushCompressor.stop();
             pickup.closePickup();
             secondary.closeSecondary();
             // Read the current gyro angle and save it in the static variable
@@ -182,6 +185,8 @@ public class Robot extends IterativeRobot {
         drive.start();
         smashboardCommand.start();
         roller.start();
+        
+        RobotMap.pneumaticPusherPushCompressor.start();
     }
 
     /**
