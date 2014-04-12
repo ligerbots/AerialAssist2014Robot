@@ -279,6 +279,7 @@ public class Robot extends IterativeRobot {
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_GAIN", AUTONOMOUS_DRIVE_GAIN);
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_TICKS", AUTONOMOUS_DRIVE_TICKS);
             SmartDashboard.putBoolean("Stick Control Single", Robot.StickControlSingle);
+            SmartDashboard.putBoolean("Compressor State", RobotMap.pneumaticPusherPushCompressor.enabled());
         }
 
     }

@@ -53,7 +53,8 @@ public class OI {
     public JoystickButton rollerButton;
     public JoystickButton turnRightButton;
     public JoystickButton turnLeftButton;
-    public JoystickButton toggleDriveShooterMode;    
+    public JoystickButton toggleDriveShooterMode;
+    public JoystickButton toggleCompressorButton;
     public Joystick joystick;
     public Joystick joystick2;  // for changing parameters only
     public TogglePickupArm togglePickup = new TogglePickupArm();
@@ -86,6 +87,10 @@ public class OI {
         shootButton.whenPressed(new Shoot());
         shootPressureButton = new JoystickButton(joystick, 8);
         shootPressureButton.whenPressed(new PressurizeShooter());
+        
+        // Back button toggle compressor
+        toggleCompressorButton = new JoystickButton(joystick, 7);
+        toggleCompressorButton.whenPressed(new ToggleCompressor());
 
         joystick2 = new Joystick(2);
         JoystickButton overShootUpPostivePlus = new JoystickButton(joystick2, 11);
