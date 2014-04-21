@@ -67,10 +67,11 @@ public class Robot extends IterativeRobot {
     
     // This is the section for adjustable, persisted parameters
     public static final String OVERSHOOT_FILE = "file:///2014adjustments.bin";
-    public static double OVERSHOOT_ANGLE_NEGATIVE = 8.0;
-    public static double OVERSHOOT_ANGLE_POSITIVE = 8.0;
-    public static double AUTONOMOUS_DRIVE_GAIN = 1.0;
-    public static int AUTONOMOUS_DRIVE_TICKS = 50;
+    public static double OVERSHOOT_ANGLE_NEGATIVE = 5.0;
+    public static double OVERSHOOT_ANGLE_POSITIVE = 5.0;
+    public static double AUTONOMOUS_DRIVE_GAIN = 4.0;
+    public static int AUTONOMOUS_DRIVE_TICKS = 55;
+    public static double VOLTS_PER_TICK = 0.20;
     public static boolean StickControlSingle = true;
     
     // Need this to be able to provide the starting gyro angle to the
@@ -222,9 +223,11 @@ public class Robot extends IterativeRobot {
                 AUTONOMOUS_DRIVE_GAIN = file.readDouble();    // override the gyro Drive gain
                 AUTONOMOUS_DRIVE_TICKS = file.readInt();      // override the autonomous drive tick time
                 StickControlSingle = file.readBoolean();      // override the joystick drive control
+                VOLTS_PER_TICK = file.readDouble();
                 System.out.println(OVERSHOOT_ANGLE_POSITIVE + " -angle: " + OVERSHOOT_ANGLE_NEGATIVE);
                 System.out.println("AUTONOMOUS_DRIVE_GAIN: " + AUTONOMOUS_DRIVE_GAIN);
                 System.out.println("Stick_Control: " + StickControlSingle);
+                System.out.println("VOLTS_PER_TICK: " + VOLTS_PER_TICK);
                 file.close();
                 fc.close();
             }
@@ -258,6 +261,9 @@ public class Robot extends IterativeRobot {
             System.out.println("AUTONOMOUS_DRIVE_GAIN: " + Robot.AUTONOMOUS_DRIVE_TICKS);
             file.writeBoolean(Robot.StickControlSingle);
             System.out.println("Stick_Control: " + Robot.StickControlSingle);
+            file.writeDouble(Robot.VOLTS_PER_TICK);
+            System.out.println("VOLTS_PER_TICK: " + Robot.VOLTS_PER_TICK);
+            
             
             file.flush();
             file.close();
@@ -278,6 +284,7 @@ public class Robot extends IterativeRobot {
             SmartDashboard.putNumber("OVERSHOOT_ANGLE_NEGATIVE", OVERSHOOT_ANGLE_NEGATIVE);
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_GAIN", AUTONOMOUS_DRIVE_GAIN);
             SmartDashboard.putNumber("AUTONOMOUS_DRIVE_TICKS", AUTONOMOUS_DRIVE_TICKS);
+            SmartDashboard.putNumber("VOLTS_PER_TICK", VOLTS_PER_TICK);
             SmartDashboard.putBoolean("Stick Control Single", Robot.StickControlSingle);
             SmartDashboard.putBoolean("Compressor State", RobotMap.pneumaticPusherPushCompressor.enabled());
         }

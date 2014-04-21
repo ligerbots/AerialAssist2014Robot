@@ -5,6 +5,7 @@
  */
 package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
@@ -20,13 +21,15 @@ public class AutonomousDrive extends Command {
     int m_finish;
     double m_gyro, m_gyro_start;
 
-    public AutonomousDrive(int finish) {
+    public AutonomousDrive(int ticks) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(Robot.driveTrain);
         setInterruptible(false);
-        m_finish = finish;
-         
+        double voltage = DriverStation.getInstance().getBatteryVoltage();
+        double adjust = (12.0 - voltage)/(Robot.VOLTS_PER_TICK);
+        int newticks = ticks + (int)adjust;
+        m_finish = newticks;
     }
 
     // Called just before this Command runs the first m_time
