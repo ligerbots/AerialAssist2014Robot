@@ -38,6 +38,8 @@ public class SecondaryArmSubsys extends Subsystem {
         SmartDashboard.putString("Catch", "Close");
     }
 
+    // no idea what this is doing here -- it's never called. Should it be?
+    //   -cbf 2014-04-22
     public void offSecondary() {
         secondarySolenoid.set(DoubleSolenoid.Value.kOff);
     }

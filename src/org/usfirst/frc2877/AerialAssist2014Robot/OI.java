@@ -57,8 +57,8 @@ public class OI {
     public JoystickButton toggleCompressorButton;
     public Joystick joystick;
     public Joystick joystick2;  // for changing parameters only
-    public TogglePickupArm togglePickup = new TogglePickupArm();
-    public ToggleSecondaryArm toggleSecondary = new ToggleSecondaryArm();
+    public PickupArm togglePickup = new PickupArm(PickupArm.TOGGLE);
+    public SecondaryArm toggleSecondary = new SecondaryArm(SecondaryArm.TOGGLE);
     public Turn90 TurnRight = new Turn90(90);
     public Turn90 TurnLeft = new Turn90(-90);
 

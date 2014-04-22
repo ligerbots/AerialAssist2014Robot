@@ -32,9 +32,9 @@ public class AutonomousCommand extends CommandGroup {
         addSequential(new Turn90(-90.0 - Robot.GYRO_START_ANGLE));
         // Open up the pickup and secondary arms in preparation for shooting
         System.out.println("About to Open Primary");
-        addParallel(new TogglePickupArm());
+        addParallel(new PickupArm(PickupArm.OPEN));
         System.out.println("About to Open Secondary");
-        addParallel(new ToggleSecondaryArm());
+        addParallel(new SecondaryArm(SecondaryArm.OPEN));
         // Wait until both arms are extended
         addSequential(new Delay(2.0));
         // By now, all conditions should be met for shooting, so shoot

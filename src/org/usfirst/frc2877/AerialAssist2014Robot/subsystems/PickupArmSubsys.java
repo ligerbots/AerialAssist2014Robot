@@ -54,6 +54,8 @@ public class PickupArmSubsys extends Subsystem {
     }
 
     //Turn off the pickup - maintains current position
+    // no idea what this is doing here -- it's never called. Should it be?
+    //   -cbf 2014-04-22
     public void offPickup() {
         pickupSolenoid.set(DoubleSolenoid.Value.kOff);
     }
