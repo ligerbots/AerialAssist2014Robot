@@ -17,7 +17,7 @@ import org.usfirst.frc2877.AerialAssist2014Robot.subsystems.SecondaryArmSubsys;
  */
 public class SecondaryArm extends Command{
     
-// this class can do three different things, according to the value
+    // this class can do three different things, according to the value
     // of the enum below, as passed to the constructor
     static final public int OPEN = 1;
     static final public int CLOSE = 2;
