@@ -41,5 +41,10 @@ public class AutonomousCommand extends CommandGroup {
         System.out.println("About to shoot in Autonomous");
         addSequential(new Shoot());
         System.out.println("Autonomous Done");
+        // For some reason, the Shoot command does not execute the second time 
+        // in autonomous. One theory is that it has something to do with it
+        // being the last command added to the list of autonomous commands
+        // Let's try adding a short delay here to see of that fixes anything.
+        addSequential(new Delay(0.1));
     }
 }
