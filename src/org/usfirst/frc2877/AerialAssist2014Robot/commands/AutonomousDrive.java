@@ -7,6 +7,7 @@ package org.usfirst.frc2877.AerialAssist2014Robot.commands;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc2877.AerialAssist2014Robot.Robot;
 import org.usfirst.frc2877.AerialAssist2014Robot.RobotMap;
 
@@ -29,6 +30,9 @@ public class AutonomousDrive extends Command {
         double voltage = DriverStation.getInstance().getBatteryVoltage();
         double adjust = (12.0 - voltage)/(Robot.VOLTS_PER_TICK);
         int newticks = ticks + (int)adjust;
+        System.out.println("Battery voltage: " + voltage + ", adjust: " + adjust + 
+                            ", ticks: " + ", newticks: " + newticks);
+        SmartDashboard.putNumber("Adjusted Drive Ticks: ", newticks);
         m_finish = newticks;
     }
 
